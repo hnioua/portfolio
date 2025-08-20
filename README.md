@@ -1,85 +1,107 @@
-# Abdessamad Hnioua – Portfolio GitHub
+# React
 
-![GitHub followers](https://img.shields.io/github/followers/abdessamadhnioua?style=social)
-![GitHub repo size](https://img.shields.io/github/repo-size/abdessamadhnioua/portfolio?style=flat-square)
-![LinkedIn](https://img.shields.io/badge/LinkedIn-abdessamad--hnioua-blue?style=flat-square&logo=linkedin)
+A modern React-based project utilizing the latest frontend technologies and tools for building responsive web applications.
 
----
+## 🚀 Features
 
-## 📍 Contact
-- **Email :** abdessamadhnioua@gmail.com  
-- **Téléphone :** +212 670775289  
-- **LinkedIn :** [linkedin.com/in/abdessamad-hnioua](https://linkedin.com/in/abdessamad-hnioua)  
-- **Localisation :** Maroc  
+- **React 18** - React version with improved rendering and concurrent features
+- **Vite** - Lightning-fast build tool and development server
+- **Redux Toolkit** - State management with simplified Redux setup
+- **TailwindCSS** - Utility-first CSS framework with extensive customization
+- **React Router v6** - Declarative routing for React applications
+- **Data Visualization** - Integrated D3.js and Recharts for powerful data visualization
+- **Form Management** - React Hook Form for efficient form handling
+- **Animation** - Framer Motion for smooth UI animations
+- **Testing** - Jest and React Testing Library setup
 
----
+## 📋 Prerequisites
 
-## 💼 Profil
-Analyste en Business Intelligence et Data Science, actuellement en Master en Intelligence Artificielle et Ingénierie Informatique. Passionné par l’analyse de données et le développement de solutions basées sur l’IA, le machine learning et la visualisation de données pour transformer les données brutes en insights stratégiques.
+- Node.js (v14.x or higher)
+- npm or yarn
 
----
+## 🛠️ Installation
 
-## 🎓 Éducation
-- **Master IA & Ingénierie Informatique** – Université Cadi Ayyad, Marrakech  
-  *Spécialisation : Data Science et Aide à la décision, IA, Machine Learning, Traitement d’images*  
-- **Licence Professionnelle en Informatique Décisionnelle** – Université Mohammed Premier, Oujda – *Mention Très Bien*  
-- **DUT Génie Informatique** – Université Cadi Ayyad, EST-Safi – *Mention Assez Bien*  
+1. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+   
+2. Start the development server:
+   ```bash
+   npm start
+   # or
+   yarn start
+   ```
 
----
+## 📁 Project Structure
 
-## 💻 Expérience
-### Stage de fin d’études – Agence de Développement Social, Rabat (Avril – Juillet 2024)
-- Développement d’une plateforme numérique pour l’intégration sociale des femmes  
-- Mise en œuvre de processus ETL pour intégration de données multicanales  
-- **Technologies :** Next.js, Node.js, Express, MySQL, Python, Power BI  
+```
+react_app/
+├── public/             # Static assets
+├── src/
+│   ├── components/     # Reusable UI components
+│   ├── pages/          # Page components
+│   ├── styles/         # Global styles and Tailwind configuration
+│   ├── App.jsx         # Main application component
+│   ├── Routes.jsx      # Application routes
+│   └── index.jsx       # Application entry point
+├── .env                # Environment variables
+├── index.html          # HTML template
+├── package.json        # Project dependencies and scripts
+├── tailwind.config.js  # Tailwind CSS configuration
+└── vite.config.js      # Vite configuration
+```
 
-### Projet développement web – Académie Régionale de l’Éducation et de la Formation, Souss Massa (Avril – Juin 2023)
-- Application web pour collecte, gestion et visualisation de données d’institutions éducatives  
-- **Technologies :** React.js, React-Bootstrap, Node.js, SQL  
+## 🧩 Adding Routes
 
-### Stage d’initiation – Transparence Informatique (Juillet – Août 2022)
-- Développement d’une application web de gestion des stagiaires  
-- **Technologies :** HTML, CSS, JavaScript, PHP, SQL  
+To add new routes to the application, update the `Routes.jsx` file:
 
----
+```jsx
+import { useRoutes } from "react-router-dom";
+import HomePage from "pages/HomePage";
+import AboutPage from "pages/AboutPage";
 
-## 📂 Projets Académiques
-### Système de Détection d’Incendie avec IoT et IA
-- Robot autonome avec capteurs de détection d’incendie et caméra connectée à une application mobile  
-- Analyse d’images en temps réel via modèle d’IA  
-- **Technologies :** Kotlin, Arduino, TensorFlow Lite, Firebase, ESP8266, DHT11, MQ2  
+const ProjectRoutes = () => {
+  let element = useRoutes([
+    { path: "/", element: <HomePage /> },
+    { path: "/about", element: <AboutPage /> },
+    // Add more routes as needed
+  ]);
 
-### Reconnaissance de Texte sur Panneaux de Signalisation (OCR)
-- Détection et reconnaissance de texte dans des conditions difficiles  
-- Prétraitement d’images : débruitage, correction de flou, amélioration de contraste  
-- **Technologies :** Python, OpenCV, Tesseract, EasyOCR, TensorFlow  
+  return element;
+};
+```
 
-### Analyse des Conditions de Vie via l’API Eurostat
-- Étude statistique des facteurs influençant les conditions de vie : régression multiple, ANOVA, ACP, Classification Hiérarchique  
-- **Technologies :** Python (Pandas, NumPy, Scikit-learn), API REST Eurostat  
+## 🎨 Styling
 
----
+This project uses Tailwind CSS for styling. The configuration includes:
 
-## 🛠️ Compétences
-- **Analyse de données & BI :** ETL, Power BI, Tableau, nettoyage de données  
-- **IA & Machine Learning :** Régression, Classification, Clustering, Vision par ordinateur  
-- **Programmation & Développement :** Python, Kotlin, Android, React.js, Next.js, Node.js, Express, Java, C, C++  
-- **Bases de données :** SQL (MySQL), NoSQL (MongoDB), Data Warehousing  
-- **Méthodologies :** Gestion de projet Agile (Scrum)  
+- Forms plugin for form styling
+- Typography plugin for text styling
+- Aspect ratio plugin for responsive elements
+- Container queries for component-specific responsive design
+- Fluid typography for responsive text
+- Animation utilities
 
----
+## 📱 Responsive Design
 
-## 🌐 Langues
-- Arabe : Langue maternelle  
-- Français : Niveau B2  
-- Anglais : Niveau B1  
+The app is built with responsive design using Tailwind CSS breakpoints.
 
----
 
-## 📌 Liens
-- [Portfolio Web / Projets](#) *(à ajouter si tu as un site web ou démo)*  
-- [GitHub Repositories](https://github.com/abdessamadhnioua)  
+## 📦 Deployment
 
----
+Build the application for production:
 
-✨ Merci de visiter mon portfolio GitHub !  
+```bash
+npm run build
+```
+
+## 🙏 Acknowledgments
+
+- Built with [Rocket.new](https://rocket.new)
+- Powered by React and Vite
+- Styled with Tailwind CSS
+
+Built with ❤️ on Rocket.new

@@ -6,6 +6,7 @@ import Button from "../../../components/ui/Button";
 const ExperienceShowcase = ({ currentLanguage }) => {
   const [activeFilter, setActiveFilter] = useState("all");
   const [selectedProject, setSelectedProject] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const filterCategories = [
     { id: "all", label: "Tous les Projets", icon: "Grid3X3" },
@@ -18,122 +19,38 @@ const ExperienceShowcase = ({ currentLanguage }) => {
   const projects = [
     {
       id: 1,
-      title: "Plateforme E-commerce Avancée",
+      title: "Plateforme Taalim Work",
       category: "web",
-      client: "TechMart Solutions",
-      duration: "6 mois",
-      team: "4 développeurs",
+      client: "TaalimWork",
+      duration: "2 mois",
+      team: "2 développeurs",
       status: "Production",
       description:
-        "Développement complet d'une plateforme e-commerce avec gestion avancée des stocks, système de paiement sécurisé, et analytics en temps réel.",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe", "AWS", "Docker"],
+        "Développement complet d’une plateforme éducative permettant aux enseignants de commander des cahiers de textes personnalisés et de gérer leurs besoins pédagogiques en ligne.",
+      technologies: ["React", "Node.js", "Express", "PostgreSQL", "Docker"],
       features: [
-        "Interface utilisateur responsive et intuitive",
-        "Système de paiement multi-devises",
-        "Gestion automatisée des stocks",
-        "Dashboard analytics avancé",
-        "API RESTful sécurisée",
-        "Déploiement cloud scalable",
+        "Interface utilisateur responsive",
+        "Commande en ligne de cahiers personnalisés",
+        "Gestion des emplois du temps et contenus",
+        "Paiement et suivi des commandes",
+        "Déploiement cloud avec Docker",
       ],
       metrics: {
-        performance: "+40% vitesse de chargement",
-        conversion: "+25% taux de conversion",
-        users: "10,000+ utilisateurs actifs",
-        revenue: "+60% augmentation des ventes",
+        clients: "100+ enseignants utilisateurs",
+        delivery: "≤ 3 jours par commande",
+        performances: "+35% rapidité grâce à la mise en cache",
       },
       challenges:
-        "Optimisation des performances pour gérer 10,000+ produits simultanément et intégration de multiples passerelles de paiement.",
+        "Assurer la personnalisation des cahiers en fonction des différents emplois du temps et optimiser la performance de la plateforme pour un grand nombre d’utilisateurs.",
       solution:
-        "Implémentation de la pagination côté serveur, mise en cache Redis, et architecture microservices pour la scalabilité.",
-      image:
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-      demoUrl: "https://demo-ecommerce.example.com",
-      githubUrl: "https://github.com/abdessamad/ecommerce-platform",
+        "Mise en place d’une architecture full-stack (React/Node.js), base de données PostgreSQL optimisée et déploiement scalable via Docker.",
+      images: [
+        "public/assets/images/project/PC.png",
+        "public/assets/images/project/PageHomePc.png",
+      ],
+      demoUrl: "https://www.taalim.work/",
+      githubUrl: "null",
     },
-    {
-      id: 2,
-      title: "Application Mobile de Gestion RH",
-      category: "mobile",
-      client: "HRTech Innovations",
-      duration: "4 mois",
-      team: "3 développeurs",
-      status: "Production",
-      description:
-        "Application mobile native Android pour la gestion des ressources humaines avec fonctionnalités de pointage, congés, et communication interne.",
-      technologies: [
-        "Kotlin",
-        "Android Studio",
-        "Firebase",
-        "Material Design",
-        "Room DB",
-        "Retrofit",
-      ],
-      features: [
-        "Système de pointage géolocalisé",
-        "Gestion des demandes de congés",
-        "Chat interne sécurisé",
-        "Notifications push intelligentes",
-        "Mode hors-ligne",
-        "Interface Material Design",
-      ],
-      metrics: {
-        downloads: "5,000+ téléchargements",
-        rating: "4.7/5 étoiles",
-        engagement: "85% utilisation quotidienne",
-        efficiency: "+30% efficacité RH",
-      },
-      challenges:
-        "Synchronisation des données hors-ligne et optimisation de la batterie pour le tracking GPS continu.",
-      solution:
-        "Implémentation d'une base de données locale avec synchronisation intelligente et optimisation des requêtes GPS.",
-      image:
-        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop",
-      demoUrl: "https://play.google.com/store/apps/details?id=com.hrtech.app",
-      githubUrl: "https://github.com/abdessamad/hr-mobile-app",
-    },
-    {
-      id: 3,
-      title: "Système de Prédiction des Ventes",
-      category: "data",
-      client: "RetailAnalytics Corp",
-      duration: "5 mois",
-      team: "2 data scientists",
-      status: "Production",
-      description:
-        "Développement d'un modèle de machine learning pour prédire les ventes avec une précision de 92% et interface web pour visualisation.",
-      technologies: [
-        "Python",
-        "Scikit-learn",
-        "TensorFlow",
-        "Pandas",
-        "Flask",
-        "PostgreSQL",
-        "Docker",
-      ],
-      features: [
-        "Modèle de prédiction ML avancé",
-        "Analyse des tendances saisonnières",
-        "Détection d'anomalies automatique",
-        "API de prédiction en temps réel",
-        "Interface web interactive",
-        "Rapports automatisés",
-      ],
-      metrics: {
-        accuracy: "92% précision des prédictions",
-        improvement: "+35% amélioration des stocks",
-        cost: "-20% réduction des coûts",
-        time: "80% réduction du temps d'analyse",
-      },
-      challenges:
-        "Traitement de datasets massifs (2M+ enregistrements) et gestion des données manquantes dans les séries temporelles.",
-      solution:
-        "Optimisation des algorithmes avec Dask pour le traitement parallèle et techniques d'imputation avancées.",
-      image:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-      demoUrl: "https://sales-prediction-demo.example.com",
-      githubUrl: "https://github.com/abdessamad/sales-prediction-ml",
-    },
-    // Ajoute les autres projets ici si nécessaire
   ];
 
   const filteredProjects =
@@ -141,8 +58,29 @@ const ExperienceShowcase = ({ currentLanguage }) => {
       ? projects
       : projects.filter((project) => project.category === activeFilter);
 
-  const openProjectModal = (project) => setSelectedProject(project);
+  const openProjectModal = (project) => {
+    setSelectedProject(project);
+    setCurrentImageIndex(0);
+  };
   const closeProjectModal = () => setSelectedProject(null);
+
+  const nextImage = () => {
+    if (selectedProject) {
+      setCurrentImageIndex(
+        (prev) => (prev + 1) % selectedProject.images.length
+      );
+    }
+  };
+
+  const prevImage = () => {
+    if (selectedProject) {
+      setCurrentImageIndex(
+        (prev) =>
+          (prev - 1 + selectedProject.images.length) %
+          selectedProject.images.length
+      );
+    }
+  };
 
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-950 text-white overflow-hidden py-20">
@@ -205,7 +143,7 @@ const ExperienceShowcase = ({ currentLanguage }) => {
             >
               <div className="relative h-48 sm:h-56 overflow-hidden">
                 <img
-                  src={project.image}
+                  src={project.images[0]}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                 />
@@ -266,15 +204,28 @@ const ExperienceShowcase = ({ currentLanguage }) => {
                   >
                     Demo
                   </Button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => window.open(project.githubUrl, "_blank")}
-                    iconName="Github"
-                    iconPosition="left"
-                  >
-                    Code
-                  </Button>
+                  {project.githubUrl && project.githubUrl !== "null" ? (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => window.open(project.githubUrl, "_blank")}
+                      iconName="Github"
+                      iconPosition="left"
+                    >
+                      Code
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      iconName="Lock"
+                      iconPosition="left"
+                      disabled
+                      className="cursor-not-allowed opacity-60"
+                    >
+                      Privé
+                    </Button>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -285,6 +236,7 @@ const ExperienceShowcase = ({ currentLanguage }) => {
         {selectedProject && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
             <div className="bg-gray-900 border border-gray-700 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6">
+              {/* Header */}
               <div className="flex justify-between items-center mb-6 sticky top-0 bg-gray-900 border-b border-gray-700 p-4">
                 <h3 className="text-2xl font-bold text-white">
                   {selectedProject.title}
@@ -298,13 +250,48 @@ const ExperienceShowcase = ({ currentLanguage }) => {
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
+                {/* Image Slider */}
                 <div>
-                  <img
-                    src={selectedProject.image}
-                    alt={selectedProject.title}
-                    className="w-full h-64 object-cover rounded-xl mb-4"
-                  />
-                  <div className="space-y-2 text-gray-300 text-sm">
+                  <div className="relative w-full h-64 mb-4">
+                    <motion.img
+                      key={currentImageIndex}
+                      src={selectedProject.images[currentImageIndex]}
+                      alt={selectedProject.title}
+                      className="w-full h-full object-cover rounded-xl"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5 }}
+                    />
+                    {/* Prev Button */}
+                    <button
+                      onClick={prevImage}
+                      className="absolute top-1/2 left-2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full"
+                    >
+                      <Icon name="ChevronLeft" size={20} />
+                    </button>
+                    {/* Next Button */}
+                    <button
+                      onClick={nextImage}
+                      className="absolute top-1/2 right-2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full"
+                    >
+                      <Icon name="ChevronRight" size={20} />
+                    </button>
+                  </div>
+                  {/* Small indicators */}
+                  <div className="flex justify-center gap-2">
+                    {selectedProject.images.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setCurrentImageIndex(idx)}
+                        className={`w-3 h-3 rounded-full ${
+                          idx === currentImageIndex
+                            ? "bg-green-500"
+                            : "bg-gray-600"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <div className="space-y-2 text-gray-300 text-sm mt-4">
                     <div>
                       <Icon name="Building" size={16} /> Client:{" "}
                       {selectedProject.client}
@@ -320,6 +307,7 @@ const ExperienceShowcase = ({ currentLanguage }) => {
                   </div>
                 </div>
 
+                {/* Project Details */}
                 <div className="space-y-4 text-gray-300">
                   <div>
                     <h4 className="font-semibold text-white mb-2">

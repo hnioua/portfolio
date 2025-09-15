@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import Icon from '../../../components/AppIcon';
+import React, { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
+import Icon from "../../../components/AppIcon";
 
 const SolutionShowcase = ({ currentLanguage }) => {
   const [activeExpertise, setActiveExpertise] = useState(0);
@@ -9,227 +9,227 @@ const SolutionShowcase = ({ currentLanguage }) => {
 
   const content = {
     fr: {
-      title: 'Solutions BI & Data Science Sur-Mesure',
-      subtitle: 'Transformez vos défis data en avantages concurrentiels',
+      title: "Solutions BI & Data Science Sur-Mesure",
+      subtitle: "Transformez vos défis data en avantages concurrentiels",
       description: `Une approche holistique combinant expertise technique, 
-      compréhension métier et technologies de pointe pour maximiser la valeur de vos données.`
+      compréhension métier et technologies de pointe pour maximiser la valeur de vos données.`,
     },
     en: {
-      title: 'Tailored BI & Data Science Solutions',
-      subtitle: 'Transform your data challenges into competitive advantages',
+      title: "Tailored BI & Data Science Solutions",
+      subtitle: "Transform your data challenges into competitive advantages",
       description: `A holistic approach combining technical expertise, 
-      business understanding, and cutting-edge technologies to maximize your data value.`
+      business understanding, and cutting-edge technologies to maximize your data value.`,
     },
     ar: {
-      title: 'حلول ذكاء الأعمال وعلوم البيانات المخصصة',
-      subtitle: 'حول تحديات البيانات إلى مزايا تنافسية',
+      title: "حلول ذكاء الأعمال وعلوم البيانات المخصصة",
+      subtitle: "حول تحديات البيانات إلى مزايا تنافسية",
       description: `نهج شامل يجمع بين الخبرة التقنية، 
-      فهم الأعمال، والتقنيات المتطورة لتعظيم قيمة بياناتك.`
-    }
+      فهم الأعمال، والتقنيات المتطورة لتعظيم قيمة بياناتك.`,
+    },
   };
 
   const expertiseAreas = {
     fr: [
       {
-        id: 'bi-analytics',
-        title: 'BI & Analytics',
-        icon: 'BarChart3',
-        description: 'Tableaux de bord interactifs et analyses prédictives',
-        color: 'blue',
+        id: "bi-analytics",
+        title: "BI & Analytics",
+        icon: "BarChart3",
+        description: "Tableaux de bord interactifs et analyses prédictives",
+        color: "blue",
         features: [
-          'Dashboards Power BI & Tableau avancés',
-          'Analyses prédictives et forecasting',
-          'KPIs métier et alertes automatisées',
-          'Rapports self-service pour utilisateurs'
+          "Dashboards Power BI & Tableau avancés",
+          "Analyses prédictives et forecasting",
+          "KPIs métier et alertes automatisées",
+          "Rapports self-service pour utilisateurs",
         ],
-        technologies: ['Power BI', 'Tableau', 'QlikView', 'Looker'],
+        technologies: ["Power BI", "Tableau", "QlikView", "Looker"],
         results: [
-          { metric: '85%', label: 'Réduction temps de reporting' },
-          { metric: '67%', label: 'Amélioration prise de décision' },
-          { metric: '45%', label: 'Augmentation ROI projets' }
-        ]
+          { metric: "85%", label: "Réduction temps de reporting" },
+          { metric: "67%", label: "Amélioration prise de décision" },
+          { metric: "45%", label: "Augmentation ROI projets" },
+        ],
       },
       {
-        id: 'machine-learning',
-        title: 'Machine Learning',
-        icon: 'Brain',
-        description: 'Modèles prédictifs et intelligence artificielle',
-        color: 'purple',
+        id: "machine-learning",
+        title: "Machine Learning",
+        icon: "Brain",
+        description: "Modèles prédictifs et intelligence artificielle",
+        color: "purple",
         features: [
-          'Modèles de classification et régression',
-          'Détection d\'anomalies et fraudes',
-          'Recommandation et personnalisation',
-          'NLP et traitement du langage naturel'
+          "Modèles de classification et régression",
+          "Détection d'anomalies et fraudes",
+          "Recommandation et personnalisation",
+          "NLP et traitement du langage naturel",
         ],
-        technologies: ['Python', 'Scikit-learn', 'TensorFlow', 'PyTorch'],
+        technologies: ["Python", "Scikit-learn", "TensorFlow", "PyTorch"],
         results: [
-          { metric: '92%', label: 'Précision des modèles' },
-          { metric: '78%', label: 'Réduction des erreurs' },
-          { metric: '156%', label: 'ROI sur automatisation' }
-        ]
+          { metric: "92%", label: "Précision des modèles" },
+          { metric: "78%", label: "Réduction des erreurs" },
+          { metric: "156%", label: "ROI sur automatisation" },
+        ],
       },
       {
-        id: 'data-engineering',
-        title: 'Data Engineering',
-        icon: 'Database',
-        description: 'Architecture et pipelines de données robustes',
-        color: 'green',
+        id: "data-engineering",
+        title: "Data Engineering",
+        icon: "Database",
+        description: "Architecture et pipelines de données robustes",
+        color: "green",
         features: [
-          'ETL/ELT et pipelines automatisés',
-          'Data warehouses et data lakes',
-          'Intégration multi-sources',
-          'Gouvernance et qualité des données'
+          "ETL/ELT et pipelines automatisés",
+          "Data warehouses et data lakes",
+          "Intégration multi-sources",
+          "Gouvernance et qualité des données",
         ],
-        technologies: ['SQL Server', 'PostgreSQL', 'Apache Spark', 'Airflow'],
+        technologies: ["SQL Server", "PostgreSQL", "Apache Spark", "Airflow"],
         results: [
-          { metric: '73%', label: 'Réduction temps traitement' },
-          { metric: '95%', label: 'Qualité des données' },
-          { metric: '60%', label: 'Coûts infrastructure optimisés' }
-        ]
-      }
+          { metric: "73%", label: "Réduction temps traitement" },
+          { metric: "95%", label: "Qualité des données" },
+          { metric: "60%", label: "Coûts infrastructure optimisés" },
+        ],
+      },
     ],
     en: [
       {
-        id: 'bi-analytics',
-        title: 'BI & Analytics',
-        icon: 'BarChart3',
-        description: 'Interactive dashboards and predictive analytics',
-        color: 'blue',
+        id: "bi-analytics",
+        title: "BI & Analytics",
+        icon: "BarChart3",
+        description: "Interactive dashboards and predictive analytics",
+        color: "blue",
         features: [
-          'Advanced Power BI & Tableau dashboards',
-          'Predictive analytics and forecasting',
-          'Business KPIs and automated alerts',
-          'Self-service reports for users'
+          "Advanced Power BI & Tableau dashboards",
+          "Predictive analytics and forecasting",
+          "Business KPIs and automated alerts",
+          "Self-service reports for users",
         ],
-        technologies: ['Power BI', 'Tableau', 'QlikView', 'Looker'],
+        technologies: ["Power BI", "Tableau", "QlikView", "Looker"],
         results: [
-          { metric: '85%', label: 'Reporting time reduction' },
-          { metric: '67%', label: 'Decision-making improvement' },
-          { metric: '45%', label: 'Project ROI increase' }
-        ]
+          { metric: "85%", label: "Reporting time reduction" },
+          { metric: "67%", label: "Decision-making improvement" },
+          { metric: "45%", label: "Project ROI increase" },
+        ],
       },
       {
-        id: 'machine-learning',
-        title: 'Machine Learning',
-        icon: 'Brain',
-        description: 'Predictive models and artificial intelligence',
-        color: 'purple',
+        id: "machine-learning",
+        title: "Machine Learning",
+        icon: "Brain",
+        description: "Predictive models and artificial intelligence",
+        color: "purple",
         features: [
-          'Classification and regression models',
-          'Anomaly and fraud detection',
-          'Recommendation and personalization',
-          'NLP and natural language processing'
+          "Classification and regression models",
+          "Anomaly and fraud detection",
+          "Recommendation and personalization",
+          "NLP and natural language processing",
         ],
-        technologies: ['Python', 'Scikit-learn', 'TensorFlow', 'PyTorch'],
+        technologies: ["Python", "Scikit-learn", "TensorFlow", "PyTorch"],
         results: [
-          { metric: '92%', label: 'Model accuracy' },
-          { metric: '78%', label: 'Error reduction' },
-          { metric: '156%', label: 'Automation ROI' }
-        ]
+          { metric: "92%", label: "Model accuracy" },
+          { metric: "78%", label: "Error reduction" },
+          { metric: "156%", label: "Automation ROI" },
+        ],
       },
       {
-        id: 'data-engineering',
-        title: 'Data Engineering',
-        icon: 'Database',
-        description: 'Robust data architecture and pipelines',
-        color: 'green',
+        id: "data-engineering",
+        title: "Data Engineering",
+        icon: "Database",
+        description: "Robust data architecture and pipelines",
+        color: "green",
         features: [
-          'Automated ETL/ELT pipelines',
-          'Data warehouses and data lakes',
-          'Multi-source integration',
-          'Data governance and quality'
+          "Automated ETL/ELT pipelines",
+          "Data warehouses and data lakes",
+          "Multi-source integration",
+          "Data governance and quality",
         ],
-        technologies: ['SQL Server', 'PostgreSQL', 'Apache Spark', 'Airflow'],
+        technologies: ["SQL Server", "PostgreSQL", "Apache Spark", "Airflow"],
         results: [
-          { metric: '73%', label: 'Processing time reduction' },
-          { metric: '95%', label: 'Data quality' },
-          { metric: '60%', label: 'Optimized infrastructure costs' }
-        ]
-      }
+          { metric: "73%", label: "Processing time reduction" },
+          { metric: "95%", label: "Data quality" },
+          { metric: "60%", label: "Optimized infrastructure costs" },
+        ],
+      },
     ],
     ar: [
       {
-        id: 'bi-analytics',
-        title: 'ذكاء الأعمال والتحليلات',
-        icon: 'BarChart3',
-        description: 'لوحات معلومات تفاعلية وتحليلات تنبؤية',
-        color: 'blue',
+        id: "bi-analytics",
+        title: "ذكاء الأعمال والتحليلات",
+        icon: "BarChart3",
+        description: "لوحات معلومات تفاعلية وتحليلات تنبؤية",
+        color: "blue",
         features: [
-          'لوحات Power BI و Tableau متقدمة',
-          'التحليلات التنبؤية والتنبؤ',
-          'مؤشرات الأداء والتنبيهات الآلية',
-          'تقارير الخدمة الذاتية للمستخدمين'
+          "لوحات Power BI و Tableau متقدمة",
+          "التحليلات التنبؤية والتنبؤ",
+          "مؤشرات الأداء والتنبيهات الآلية",
+          "تقارير الخدمة الذاتية للمستخدمين",
         ],
-        technologies: ['Power BI', 'Tableau', 'QlikView', 'Looker'],
+        technologies: ["Power BI", "Tableau", "QlikView", "Looker"],
         results: [
-          { metric: '85%', label: 'تقليل وقت التقارير' },
-          { metric: '67%', label: 'تحسين اتخاذ القرارات' },
-          { metric: '45%', label: 'زيادة عائد الاستثمار' }
-        ]
+          { metric: "85%", label: "تقليل وقت التقارير" },
+          { metric: "67%", label: "تحسين اتخاذ القرارات" },
+          { metric: "45%", label: "زيادة عائد الاستثمار" },
+        ],
       },
       {
-        id: 'machine-learning',
-        title: 'التعلم الآلي',
-        icon: 'Brain',
-        description: 'النماذج التنبؤية والذكاء الاصطناعي',
-        color: 'purple',
+        id: "machine-learning",
+        title: "التعلم الآلي",
+        icon: "Brain",
+        description: "النماذج التنبؤية والذكاء الاصطناعي",
+        color: "purple",
         features: [
-          'نماذج التصنيف والانحدار',
-          'كشف الشذوذ والاحتيال',
-          'التوصية والتخصيص',
-          'معالجة اللغة الطبيعية'
+          "نماذج التصنيف والانحدار",
+          "كشف الشذوذ والاحتيال",
+          "التوصية والتخصيص",
+          "معالجة اللغة الطبيعية",
         ],
-        technologies: ['Python', 'Scikit-learn', 'TensorFlow', 'PyTorch'],
+        technologies: ["Python", "Scikit-learn", "TensorFlow", "PyTorch"],
         results: [
-          { metric: '92%', label: 'دقة النماذج' },
-          { metric: '78%', label: 'تقليل الأخطاء' },
-          { metric: '156%', label: 'عائد الاستثمار في الأتمتة' }
-        ]
+          { metric: "92%", label: "دقة النماذج" },
+          { metric: "78%", label: "تقليل الأخطاء" },
+          { metric: "156%", label: "عائد الاستثمار في الأتمتة" },
+        ],
       },
       {
-        id: 'data-engineering',
-        title: 'هندسة البيانات',
-        icon: 'Database',
-        description: 'هندسة البيانات وخطوط الأنابيب القوية',
-        color: 'green',
+        id: "data-engineering",
+        title: "هندسة البيانات",
+        icon: "Database",
+        description: "هندسة البيانات وخطوط الأنابيب القوية",
+        color: "green",
         features: [
-          'خطوط ETL/ELT الآلية',
-          'مستودعات وبحيرات البيانات',
-          'التكامل متعدد المصادر',
-          'حوكمة وجودة البيانات'
+          "خطوط ETL/ELT الآلية",
+          "مستودعات وبحيرات البيانات",
+          "التكامل متعدد المصادر",
+          "حوكمة وجودة البيانات",
         ],
-        technologies: ['SQL Server', 'PostgreSQL', 'Apache Spark', 'Airflow'],
+        technologies: ["SQL Server", "PostgreSQL", "Apache Spark", "Airflow"],
         results: [
-          { metric: '73%', label: 'تقليل وقت المعالجة' },
-          { metric: '95%', label: 'جودة البيانات' },
-          { metric: '60%', label: 'تكاليف البنية المحسنة' }
-        ]
-      }
-    ]
+          { metric: "73%", label: "تقليل وقت المعالجة" },
+          { metric: "95%", label: "جودة البيانات" },
+          { metric: "60%", label: "تكاليف البنية المحسنة" },
+        ],
+      },
+    ],
   };
 
   const colorClasses = {
     blue: {
-      bg: 'bg-blue-50',
-      border: 'border-blue-200',
-      icon: 'text-blue-600',
-      accent: 'bg-blue-100',
-      gradient: 'from-blue-500 to-cyan-500'
+      bg: "bg-blue-50",
+      border: "border-blue-200",
+      icon: "text-blue-600",
+      accent: "bg-blue-100",
+      gradient: "from-blue-500 to-cyan-500",
     },
     purple: {
-      bg: 'bg-purple-50',
-      border: 'border-purple-200',
-      icon: 'text-purple-600',
-      accent: 'bg-purple-100',
-      gradient: 'from-purple-500 to-pink-500'
+      bg: "bg-purple-50",
+      border: "border-purple-200",
+      icon: "text-purple-600",
+      accent: "bg-purple-100",
+      gradient: "from-purple-500 to-pink-500",
     },
     green: {
-      bg: 'bg-green-50',
-      border: 'border-green-200',
-      icon: 'text-green-600',
-      accent: 'bg-green-100',
-      gradient: 'from-green-500 to-emerald-500'
-    }
+      bg: "bg-green-50",
+      border: "border-green-200",
+      icon: "text-green-600",
+      accent: "bg-green-100",
+      gradient: "from-green-500 to-emerald-500",
+    },
   };
 
   useEffect(() => {
@@ -251,7 +251,9 @@ const SolutionShowcase = ({ currentLanguage }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveExpertise((prev) => (prev + 1) % expertiseAreas?.[currentLanguage]?.length);
+      setActiveExpertise(
+        (prev) => (prev + 1) % expertiseAreas?.[currentLanguage]?.length
+      );
     }, 5000);
 
     return () => clearInterval(interval);
@@ -292,40 +294,52 @@ const SolutionShowcase = ({ currentLanguage }) => {
             {expertiseAreas?.[currentLanguage]?.map((area, index) => {
               const areaColors = colorClasses?.[area?.color];
               const isActive = activeExpertise === index;
-              
+
               return (
                 <motion.div
                   key={area?.id}
                   className={`
                     relative p-6 rounded-2xl cursor-pointer portfolio-transition border-2
-                    ${isActive ? `${areaColors?.bg} ${areaColors?.border}` : 'bg-slate-50 border-slate-200 hover:bg-slate-100'}
+                    ${
+                      isActive
+                        ? `${areaColors?.bg} ${areaColors?.border}`
+                        : "bg-slate-50 border-slate-200 hover:bg-slate-100"
+                    }
                   `}
                   onClick={() => setActiveExpertise(index)}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className={`
+                    <div
+                      className={`
                       w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0
-                      ${isActive ? areaColors?.accent : 'bg-white'}
-                    `}>
-                      <Icon 
-                        name={area?.icon} 
-                        size={24} 
-                        className={isActive ? areaColors?.icon : 'text-slate-600'}
+                      ${isActive ? areaColors?.accent : "bg-white"}
+                    `}
+                    >
+                      <Icon
+                        name={area?.icon}
+                        size={24}
+                        className={
+                          isActive ? areaColors?.icon : "text-slate-600"
+                        }
                       />
                     </div>
                     <div className="flex-1">
-                      <h3 className={`
+                      <h3
+                        className={`
                         text-lg font-bold mb-2
-                        ${isActive ? 'text-slate-800' : 'text-slate-700'}
-                      `}>
+                        ${isActive ? "text-slate-800" : "text-slate-700"}
+                      `}
+                      >
                         {area?.title}
                       </h3>
-                      <p className={`
+                      <p
+                        className={`
                         text-sm leading-relaxed
-                        ${isActive ? 'text-slate-600' : 'text-slate-500'}
-                      `}>
+                        ${isActive ? "text-slate-600" : "text-slate-500"}
+                      `}
+                      >
                         {area?.description}
                       </p>
                     </div>
@@ -353,8 +367,14 @@ const SolutionShowcase = ({ currentLanguage }) => {
             <div className="bg-white rounded-3xl portfolio-shadow-card p-8">
               {/* Header */}
               <div className="flex items-center space-x-4 mb-8">
-                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center ${colors?.accent}`}>
-                  <Icon name={currentExpertise?.icon} size={32} className={colors?.icon} />
+                <div
+                  className={`w-16 h-16 rounded-2xl flex items-center justify-center ${colors?.accent}`}
+                >
+                  <Icon
+                    name={currentExpertise?.icon}
+                    size={32}
+                    className={colors?.icon}
+                  />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-slate-800 mb-2">
@@ -369,8 +389,11 @@ const SolutionShowcase = ({ currentLanguage }) => {
               {/* Features */}
               <div className="mb-8">
                 <h4 className="text-lg font-bold text-slate-800 mb-4">
-                  {currentLanguage === 'fr' ? 'Fonctionnalités Clés' :
-                   currentLanguage === 'en' ? 'Key Features' : 'الميزات الرئيسية'}
+                  {currentLanguage === "fr"
+                    ? "Fonctionnalités Clés"
+                    : currentLanguage === "en"
+                    ? "Key Features"
+                    : "الميزات الرئيسية"}
                 </h4>
                 <div className="grid sm:grid-cols-2 gap-3">
                   {currentExpertise?.features?.map((feature, index) => (
@@ -381,7 +404,11 @@ const SolutionShowcase = ({ currentLanguage }) => {
                       transition={{ delay: index * 0.1 }}
                       className="flex items-start space-x-3"
                     >
-                      <Icon name="CheckCircle" size={16} className={`${colors?.icon} mt-1 flex-shrink-0`} />
+                      <Icon
+                        name="CheckCircle"
+                        size={16}
+                        className={`${colors?.icon} mt-1 flex-shrink-0`}
+                      />
                       <span className="text-slate-700 text-sm">{feature}</span>
                     </motion.div>
                   ))}
@@ -391,8 +418,11 @@ const SolutionShowcase = ({ currentLanguage }) => {
               {/* Technologies */}
               <div className="mb-8">
                 <h4 className="text-lg font-bold text-slate-800 mb-4">
-                  {currentLanguage === 'fr' ? 'Technologies Utilisées' :
-                   currentLanguage === 'en' ? 'Technologies Used' : 'التقنيات المستخدمة'}
+                  {currentLanguage === "fr"
+                    ? "Technologies Utilisées"
+                    : currentLanguage === "en"
+                    ? "Technologies Used"
+                    : "التقنيات المستخدمة"}
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {currentExpertise?.technologies?.map((tech, index) => (
@@ -412,8 +442,11 @@ const SolutionShowcase = ({ currentLanguage }) => {
               {/* Results */}
               <div>
                 <h4 className="text-lg font-bold text-slate-800 mb-4">
-                  {currentLanguage === 'fr' ? 'Résultats Mesurables' :
-                   currentLanguage === 'en' ? 'Measurable Results' : 'النتائج القابلة للقياس'}
+                  {currentLanguage === "fr"
+                    ? "Résultats Mesurables"
+                    : currentLanguage === "en"
+                    ? "Measurable Results"
+                    : "النتائج القابلة للقياس"}
                 </h4>
                 <div className="grid grid-cols-3 gap-4">
                   {currentExpertise?.results?.map((result, index) => (
@@ -424,7 +457,9 @@ const SolutionShowcase = ({ currentLanguage }) => {
                       transition={{ delay: index * 0.2 }}
                       className={`text-center p-4 rounded-xl ${colors?.bg}`}
                     >
-                      <div className={`text-2xl font-bold ${colors?.icon} mb-1`}>
+                      <div
+                        className={`text-2xl font-bold ${colors?.icon} mb-1`}
+                      >
                         {result?.metric}
                       </div>
                       <div className="text-xs text-slate-600 font-medium">
@@ -447,22 +482,68 @@ const SolutionShowcase = ({ currentLanguage }) => {
         >
           <div className="text-center mb-12">
             <h3 className="text-2xl font-bold text-slate-800 mb-4">
-              {currentLanguage === 'fr' ? 'Méthodologie Éprouvée' :
-               currentLanguage === 'en' ? 'Proven Methodology' : 'منهجية مثبتة'}
+              {currentLanguage === "fr"
+                ? "Méthodologie Éprouvée"
+                : currentLanguage === "en"
+                ? "Proven Methodology"
+                : "منهجية مثبتة"}
             </h3>
             <p className="text-slate-600 max-w-2xl mx-auto">
-              {currentLanguage === 'fr' ? 'Un processus structuré en 5 étapes pour garantir le succès de vos projets data' :
-               currentLanguage === 'en'? 'A structured 5-step process to ensure the success of your data projects' : 'عملية منظمة من 5 خطوات لضمان نجاح مشاريع البيانات الخاصة بك'}
+              {currentLanguage === "fr"
+                ? "Un processus structuré en 5 étapes pour garantir le succès de vos projets data"
+                : currentLanguage === "en"
+                ? "A structured 5-step process to ensure the success of your data projects"
+                : "عملية منظمة من 5 خطوات لضمان نجاح مشاريع البيانات الخاصة بك"}
             </p>
           </div>
 
           <div className="flex flex-col md:flex-row items-center justify-between space-y-8 md:space-y-0 md:space-x-4">
             {[
-              { icon: 'Search', label: currentLanguage === 'fr' ? 'Analyse' : currentLanguage === 'en' ? 'Analysis' : 'التحليل' },
-              { icon: 'Settings', label: currentLanguage === 'fr' ? 'Conception' : currentLanguage === 'en' ? 'Design' : 'التصميم' },
-              { icon: 'Code', label: currentLanguage === 'fr' ? 'Développement' : currentLanguage === 'en' ? 'Development' : 'التطوير' },
-              { icon: 'TestTube', label: currentLanguage === 'fr' ? 'Tests' : currentLanguage === 'en' ? 'Testing' : 'الاختبار' },
-              { icon: 'Rocket', label: currentLanguage === 'fr' ? 'Déploiement' : currentLanguage === 'en' ? 'Deployment' : 'النشر' }
+              {
+                icon: "Search",
+                label:
+                  currentLanguage === "fr"
+                    ? "Analyse"
+                    : currentLanguage === "en"
+                    ? "Analysis"
+                    : "التحليل",
+              },
+              {
+                icon: "Settings",
+                label:
+                  currentLanguage === "fr"
+                    ? "Conception"
+                    : currentLanguage === "en"
+                    ? "Design"
+                    : "التصميم",
+              },
+              {
+                icon: "Code",
+                label:
+                  currentLanguage === "fr"
+                    ? "Développement"
+                    : currentLanguage === "en"
+                    ? "Development"
+                    : "التطوير",
+              },
+              {
+                icon: "TestTube",
+                label:
+                  currentLanguage === "fr"
+                    ? "Tests"
+                    : currentLanguage === "en"
+                    ? "Testing"
+                    : "الاختبار",
+              },
+              {
+                icon: "Rocket",
+                label:
+                  currentLanguage === "fr"
+                    ? "Déploiement"
+                    : currentLanguage === "en"
+                    ? "Deployment"
+                    : "النشر",
+              },
             ]?.map((step, index) => (
               <React.Fragment key={index}>
                 <motion.div
@@ -474,10 +555,16 @@ const SolutionShowcase = ({ currentLanguage }) => {
                   <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center mb-3">
                     <Icon name={step?.icon} size={24} className="text-white" />
                   </div>
-                  <span className="text-sm font-medium text-slate-700">{step?.label}</span>
+                  <span className="text-sm font-medium text-slate-700">
+                    {step?.label}
+                  </span>
                 </motion.div>
                 {index < 4 && (
-                  <Icon name="ArrowRight" size={20} className="text-slate-400 hidden md:block" />
+                  <Icon
+                    name="ArrowRight"
+                    size={20}
+                    className="text-slate-400 hidden md:block"
+                  />
                 )}
               </React.Fragment>
             ))}

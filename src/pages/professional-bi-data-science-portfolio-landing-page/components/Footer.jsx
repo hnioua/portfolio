@@ -88,32 +88,26 @@ const Footer = ({ currentLanguage }) => {
     {
       name: "LinkedIn",
       icon: "Linkedin",
-      href: "https://linkedin.com/in/abdessamad-hnioua",
+      href: "https://www.linkedin.com/in/abdessamad-hnioua-058a1523a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       color: "text-green-500",
     },
     {
       name: "GitHub",
       icon: "Github",
-      href: "https://github.com/abdessamad-hnioua",
+      href: "https://github.com/hnioua",
       color: "text-gray-200",
-    },
-    {
-      name: "Twitter",
-      icon: "Twitter",
-      href: "https://twitter.com/abdessamad_h",
-      color: "text-green-400",
     },
     {
       name: "Email",
       icon: "Mail",
-      href: "mailto:abdessamad.hnioua@gmail.com",
+      href: "mailto:abdessamadhnioua@gmail.com",
       color: "text-gray-300",
     },
   ];
 
   const contactInfo = {
-    email: "abdessamad.hnioua@gmail.com",
-    phone: "+212 661 234 567",
+    email: "abdessamadhnioua@gmail.com",
+    phone: "+212 670775289",
     location: content?.[currentLanguage]?.location,
   };
 

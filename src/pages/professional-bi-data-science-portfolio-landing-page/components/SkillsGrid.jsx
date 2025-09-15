@@ -1,6 +1,66 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import Icon from "../../../components/AppIcon";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPython,
+  faNode,
+  faReact,
+  faLaravel,
+  faHtml5,
+  faCss3,
+  faJs,
+  faPhp,
+} from "@fortawesome/free-brands-svg-icons";
+import {
+  faDatabase,
+  faCalculator,
+  faChartLine,
+  faTrash,
+  faLayerGroup,
+  faServer,
+  faBrain,
+  faBolt,
+  faChartSimple,
+  faRepeat,
+  faCheckSquare,
+  faChartBar,
+} from "@fortawesome/free-solid-svg-icons";
+
+// Mapping des icônes pour les compétences
+const skillIconsMap = {
+  HTML: faHtml5,
+  CSS: faCss3,
+  JavaScript: faJs,
+  "AJAX / XML": faServer,
+  PHP: faPhp,
+  "React.js": faReact,
+  Laravel: faLaravel,
+  "Next.js": faReact,
+  "Node.js": faNode,
+  "Express.js": faServer,
+  Arduino: faServer,
+  Python: faPython,
+  Pandas: faDatabase,
+  NumPy: faCalculator,
+  Matplotlib: faChartLine,
+  "Data Cleaning": faTrash,
+  "PCA / VFD / AFC / AFD": faLayerGroup,
+  "Regression Techniques": faChartLine,
+  "Classification Techniques": faCheckSquare,
+  Clustering: faLayerGroup,
+  "Scikit-learn": faBrain,
+  TensorFlow: faBolt,
+  "Power BI": faChartBar,
+  Tableau: faChartSimple,
+  ETL: faRepeat,
+};
+
+// Composant SkillIcon
+const SkillIcon = ({ name, className = "text-green-400 text-xl" }) => {
+  const icon = skillIconsMap[name];
+  if (!icon) return null;
+  return <FontAwesomeIcon icon={icon} className={className} />;
+};
 
 const SkillsGrid = ({ currentLanguage }) => {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -16,204 +76,55 @@ const SkillsGrid = ({ currentLanguage }) => {
       title: "Technical Skills",
       subtitle: "Mastery of modern technologies and Data Analysis",
     },
-    ar: {
-      title: "المهارات التقنية",
-      subtitle: "إتقان التقنيات الحديثة وتحليل البيانات",
-    },
   };
 
   const categories = [
-    { id: "all", label: { fr: "Toutes", en: "All", ar: "الكل" } },
-    {
-      id: "web",
-      label: { fr: "Web & Dev", en: "Web & Dev", ar: "الويب والتطوير" },
-    },
-    {
-      id: "ml",
-      label: {
-        fr: "Machine Learning",
-        en: "Machine Learning",
-        ar: "التعلم الآلي",
-      },
-    },
-    {
-      id: "bi",
-      label: {
-        fr: "BI & Visualisation",
-        en: "BI & Visualization",
-        ar: "ذكاء الأعمال والتصور",
-      },
-    },
+    { id: "all", label: { fr: "Toutes", en: "All" } },
+    { id: "web", label: { fr: "Web & Dev", en: "Web & Dev" } },
+    { id: "ml", label: { fr: "Machine Learning", en: "Machine Learning" } },
+    { id: "bi", label: { fr: "BI & Visualisation", en: "BI & Visualization" } },
     {
       id: "data",
-      label: {
-        fr: "Analyse & Cleaning",
-        en: "Data Analysis & Cleaning",
-        ar: "تحليل وتنظيف البيانات",
-      },
+      label: { fr: "Analyse & Cleaning", en: "Data Analysis & Cleaning" },
     },
+    { id: "hardware", label: { fr: "Robotique", en: "Hardware & Robotics" } },
   ];
 
   const skills = [
     // Web & Dev
-    {
-      name: "HTML",
-      category: "web",
-      icon: "Html5",
-      description: "HTML5 structuring web pages",
-    },
-    {
-      name: "CSS",
-      category: "web",
-      icon: "Css3",
-      description: "CSS3 styling and responsive design",
-    },
-    {
-      name: "JavaScript",
-      category: "web",
-      icon: "JsSquare",
-      description: "Dynamic web applications",
-    },
-    {
-      name: "AJAX / XML",
-      category: "web",
-      icon: "FileCode",
-      description: "Asynchronous data handling",
-    },
-    {
-      name: "PHP",
-      category: "web",
-      icon: "Php",
-      description: "Server-side programming",
-    },
-    {
-      name: "React.js",
-      category: "web",
-      icon: "React",
-      description: "Front-end component-based UI",
-    },
-    {
-      name: "Laravel",
-      category: "web",
-      icon: "Laravel",
-      description: "PHP framework for web apps",
-    },
-    {
-      name: "Next.js",
-      category: "web",
-      icon: "NextJs",
-      description: "React SSR framework",
-    },
-    {
-      name: "Node.js",
-      category: "web",
-      icon: "NodeJs",
-      description: "Backend with JS",
-    },
-    {
-      name: "Express.js",
-      category: "web",
-      icon: "Server",
-      description: "Node.js web framework",
-    },
+    { name: "HTML", category: "web" },
+    { name: "CSS", category: "web" },
+    { name: "JavaScript", category: "web" },
+    { name: "AJAX / XML", category: "web" },
+    { name: "PHP", category: "web" },
+    { name: "React.js", category: "web" },
+    { name: "Laravel", category: "web" },
+    { name: "Next.js", category: "web" },
+    { name: "Node.js", category: "web" },
+    { name: "Express.js", category: "web" },
 
-    // Hardware / Robotique
-    {
-      name: "Arduino",
-      category: "hardware",
-      icon: "Cpu",
-      description: "Microcontroller programming & robotics",
-    },
+    // Hardware
+    { name: "Arduino", category: "hardware" },
 
-    // Data & Analysis
-    {
-      name: "Python",
-      category: "data",
-      icon: "Python",
-      description: "Data processing & ML",
-    },
-    {
-      name: "Pandas",
-      category: "data",
-      icon: "Database",
-      description: "DataFrames & cleaning",
-    },
-    {
-      name: "NumPy",
-      category: "data",
-      icon: "Calculator",
-      description: "Numerical computing",
-    },
-    {
-      name: "Matplotlib",
-      category: "data",
-      icon: "ChartLine",
-      description: "Data visualization",
-    },
-    {
-      name: "Data Cleaning",
-      category: "data",
-      icon: "Trash2",
-      description: "Missing values, normalization, encoding",
-    },
-    {
-      name: "PCA / VFD / AFC / AFD",
-      category: "data",
-      icon: "Layers",
-      description: "Dimensionality reduction & feature analysis",
-    },
+    // Data
+    { name: "Python", category: "data" },
+    { name: "Pandas", category: "data" },
+    { name: "NumPy", category: "data" },
+    { name: "Matplotlib", category: "data" },
+    { name: "Data Cleaning", category: "data" },
+    { name: "PCA / VFD / AFC / AFD", category: "data" },
 
     // Machine Learning
-    {
-      name: "Regression Techniques",
-      category: "ml",
-      icon: "TrendingUp",
-      description: "Linear & logistic regression models",
-    },
-    {
-      name: "Classification Techniques",
-      category: "ml",
-      icon: "CheckSquare",
-      description: "Decision trees, SVM, KNN, etc.",
-    },
-    {
-      name: "Clustering",
-      category: "ml",
-      icon: "Cluster",
-      description: "K-Means, Hierarchical clustering",
-    },
-    {
-      name: "Scikit-learn",
-      category: "ml",
-      icon: "Brain",
-      description: "Machine Learning library",
-    },
-    {
-      name: "TensorFlow",
-      category: "ml",
-      icon: "Zap",
-      description: "Deep Learning models",
-    },
+    { name: "Regression Techniques", category: "ml" },
+    { name: "Classification Techniques", category: "ml" },
+    { name: "Clustering", category: "ml" },
+    { name: "Scikit-learn", category: "ml" },
+    { name: "TensorFlow", category: "ml" },
 
-    // BI & Visualization
-    {
-      name: "Power BI",
-      category: "bi",
-      icon: "BarChart3",
-      description: "Interactive dashboards",
-    },
-    {
-      name: "Tableau",
-      category: "bi",
-      icon: "TrendingUp",
-      description: "Data visualization & storytelling",
-    },
-    {
-      name: "ETL",
-      category: "bi",
-      icon: "Repeat",
-      description: "Data extraction & transformation",
-    },
+    // BI
+    { name: "Power BI", category: "bi" },
+    { name: "Tableau", category: "bi" },
+    { name: "ETL", category: "bi" },
   ];
 
   const filteredSkills =
@@ -244,13 +155,13 @@ const SkillsGrid = ({ currentLanguage }) => {
         <div className="absolute inset-0 bg-[url('/assets/images/grid.svg')] opacity-10" />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-green-400 mb-4">
             {content[currentLanguage].title}
@@ -261,7 +172,7 @@ const SkillsGrid = ({ currentLanguage }) => {
         </motion.div>
 
         {/* Categories */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 mb-10">
           {categories.map((cat) => (
             <button
               key={cat.id}
@@ -278,30 +189,21 @@ const SkillsGrid = ({ currentLanguage }) => {
           ))}
         </div>
 
-        {/* Skills Grid */}
-        <motion.div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredSkills.map((skill, index) => (
-            <motion.div
+        {/* Skills List */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isVisible ? { opacity: 1 } : {}}
+          transition={{ duration: 1 }}
+          className="flex flex-wrap justify-center gap-6"
+        >
+          {filteredSkills.map((skill) => (
+            <div
               key={skill.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-gray-800/70 backdrop-blur-md rounded-2xl p-6 border border-gray-700 hover:shadow-lg hover:scale-105 transition cursor-pointer"
+              className="flex items-center gap-3 px-4 py-2 bg-gray-800/60 rounded-xl border border-gray-700 hover:scale-105 hover:shadow-lg transition"
             >
-              <div className="flex items-center mb-3">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-green-500/20 mr-3">
-                  <Icon
-                    name={skill.icon}
-                    size={24}
-                    className="text-green-400"
-                  />
-                </div>
-                <h3 className="text-lg font-bold text-green-400">
-                  {skill.name}
-                </h3>
-              </div>
-              <p className="text-gray-300 text-sm">{skill.description}</p>
-            </motion.div>
+              <SkillIcon name={skill.name} />
+              <span className="text-white font-medium">{skill.name}</span>
+            </div>
           ))}
         </motion.div>
       </div>

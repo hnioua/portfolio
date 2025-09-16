@@ -56,22 +56,17 @@ const ExperienceTimeline = ({ currentLanguage = "fr" }) => {
 
   const content = {
     fr: {
-      title: "Parcours Professionnel & Académique",
+      title: "Parcours Académique",
       subtitle:
         "Une progression constante vers l'excellence en BI & Data Science",
       description:
         "Formation solide et expérience pratique dans des organismes de référence au Maroc",
     },
     en: {
-      title: "Professional & Academic Journey",
+      title: "Academic Journey",
       subtitle: "Constant progression towards excellence in BI & Data Science",
       description:
         "Solid training and practical experience in leading organizations in Morocco",
-    },
-    ar: {
-      title: "المسار المهني والأكاديمي",
-      subtitle: "تقدم مستمر نحو التميز في ذكاء الأعمال وعلوم البيانات",
-      description: "تدريب قوي وخبرة عملية في المؤسسات الرائدة في المغرب",
     },
   };
 

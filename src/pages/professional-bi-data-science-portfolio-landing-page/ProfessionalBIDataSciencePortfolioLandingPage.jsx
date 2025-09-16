@@ -98,7 +98,7 @@ const ProfessionalBIDataSciencePortfolioLandingPage = () => {
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/circuit-board.png')] opacity-10 animate-pulse"></div>
       </div>
 
-      {/* Navigation Header */}
+      {/* -------------------- Navigation Header -------------------- */}
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -110,7 +110,7 @@ const ProfessionalBIDataSciencePortfolioLandingPage = () => {
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
+            {/* ---------- Logo ---------- */}
             <motion.div
               className="flex items-center space-x-3 cursor-pointer"
               onClick={() => scrollToSection("#accueil")}
@@ -124,13 +124,10 @@ const ProfessionalBIDataSciencePortfolioLandingPage = () => {
                 <h1 className="text-lg font-bold text-green-400 drop-shadow-[0_0_6px_#22c55e]">
                   Abdessamad Hnioua
                 </h1>
-                <p className="text-xs text-green-300">
-                  BI & Data Science Expert
-                </p>
               </div>
             </motion.div>
 
-            {/* Desktop Navigation */}
+            {/* ---------- Desktop Navigation ---------- */}
             <div className="hidden md:flex items-center space-x-8">
               {navigation[currentLanguage].map((item) => (
                 <button
@@ -155,58 +152,33 @@ const ProfessionalBIDataSciencePortfolioLandingPage = () => {
               ))}
             </div>
 
-            {/* Language Selector */}
+            {/* ---------- Language Selector ---------- */}
             <div className="flex items-center space-x-4">
-              <div className="relative">
+              {/* ---------- Dropdown Language Menu ---------- */}
+              <div className="flex items-center bg-gray-800 rounded-full p-1 w-28">
+                {/* EN Button */}
                 <button
-                  onClick={() => setShowLanguageMenu(!showLanguageMenu)}
-                  className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-colors duration-300 ${
-                    isScrolled ? "hover:bg-gray-800" : "hover:bg-green-900/30"
+                  onClick={() => handleLanguageChange("en")}
+                  className={`flex-1 text-sm font-medium rounded-full py-1 transition-colors duration-300 ${
+                    currentLanguage === "en"
+                      ? "bg-green-500 text-white"
+                      : "text-green-300 hover:bg-green-900/30"
                   }`}
                 >
-                  <span className="text-lg">{currentLang.flag}</span>
-                  <span className="text-sm font-medium text-green-300">
-                    {currentLang.code.toUpperCase()}
-                  </span>
-                  <Icon
-                    name="ChevronDown"
-                    size={16}
-                    className="text-green-400"
-                  />
+                  EN
                 </button>
 
-                <AnimatePresence>
-                  {showLanguageMenu && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="absolute top-full right-0 mt-2 w-48 bg-gray-800 rounded-xl shadow-lg border border-green-700 py-2 z-50"
-                    >
-                      {languages.map((lang) => (
-                        <button
-                          key={lang.code}
-                          onClick={() => handleLanguageChange(lang.code)}
-                          className={`w-full flex items-center space-x-3 px-4 py-2 text-left hover:bg-green-900/50 transition-colors duration-300 ${
-                            currentLanguage === lang.code
-                              ? "bg-green-700/30 text-green-400"
-                              : "text-green-300"
-                          }`}
-                        >
-                          <span className="text-lg">{lang.flag}</span>
-                          <span className="font-medium">{lang.name}</span>
-                          {currentLanguage === lang.code && (
-                            <Icon
-                              name="Check"
-                              size={16}
-                              className="text-green-400 ml-auto"
-                            />
-                          )}
-                        </button>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* FR Button */}
+                <button
+                  onClick={() => handleLanguageChange("fr")}
+                  className={`flex-1 text-sm font-medium rounded-full py-1 transition-colors duration-300 ${
+                    currentLanguage === "fr"
+                      ? "bg-green-500 text-white"
+                      : "text-green-300 hover:bg-green-900/30"
+                  }`}
+                >
+                  FR
+                </button>
               </div>
             </div>
           </div>
@@ -215,15 +187,29 @@ const ProfessionalBIDataSciencePortfolioLandingPage = () => {
 
       {/* Main Content */}
       <main>
-        <HeroSection
-          currentLanguage={currentLanguage}
-          onScrollToSection={scrollToSection}
-        />
-        <SkillsGrid currentLanguage={currentLanguage} />
-        <ExperienceTimeline currentLanguage={currentLanguage} />
-        <ExperienceStage currentLanguage={currentLanguage} />
-        <ProjectPortfolio currentLanguage={currentLanguage} />
-        <ContactForm currentLanguage={currentLanguage} />
+        <section id="accueil">
+          <HeroSection
+            currentLanguage={currentLanguage}
+            onScrollToSection={scrollToSection}
+          />
+        </section>
+
+        <section id="expertise">
+          <SkillsGrid currentLanguage={currentLanguage} />
+        </section>
+
+        <section id="experience">
+          <ExperienceTimeline currentLanguage={currentLanguage} />
+          <ExperienceStage currentLanguage={currentLanguage} />
+        </section>
+
+        <section id="projets">
+          <ProjectPortfolio currentLanguage={currentLanguage} />
+        </section>
+
+        <section id="contact">
+          <ContactForm currentLanguage={currentLanguage} />
+        </section>
       </main>
 
       {/* Footer */}

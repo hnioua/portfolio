@@ -8,6 +8,7 @@ const ExperienceShowcase = ({ currentLanguage }) => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  /* -------------------- Catégories -------------------- */
   const filterCategories = [
     { id: "all", label: "Tous les Projets", icon: "Grid3X3" },
     { id: "web", label: "Développement Web", icon: "Globe" },
@@ -16,6 +17,7 @@ const ExperienceShowcase = ({ currentLanguage }) => {
     { id: "bi", label: "Business Intelligence", icon: "PieChart" },
   ];
 
+  /* -------------------- Projets -------------------- */
   const projects = [
     {
       id: 1,
@@ -41,9 +43,9 @@ const ExperienceShowcase = ({ currentLanguage }) => {
         performances: "+35% rapidité grâce à la mise en cache",
       },
       challenges:
-        "Assurer la personnalisation des cahiers en fonction des différents emplois du temps et optimiser la performance de la plateforme pour un grand nombre d’utilisateurs.",
+        "Assurer la personnalisation des cahiers et optimiser la performance pour un grand nombre d’utilisateurs.",
       solution:
-        "Mise en place d’une architecture full-stack (React/Node.js), base de données PostgreSQL optimisée et déploiement scalable via Docker.",
+        "Architecture full-stack (React/Node.js), PostgreSQL optimisé et déploiement scalable via Docker.",
       images: [
         "public/assets/images/project/PC.png",
         "public/assets/images/project/PageHomePc.png",
@@ -51,40 +53,114 @@ const ExperienceShowcase = ({ currentLanguage }) => {
       demoUrl: "https://www.taalim.work/",
       githubUrl: "null",
     },
+    {
+      id: 2,
+      title:
+        "La plateforme du programme Gissr pour l’autonomisation et le leadership",
+      category: "web",
+      client: "Agence de Développement Social (ADS) Rabat",
+      duration: "3 mois",
+      team: "3 développeurs",
+      status: "Production",
+      description:
+        "Mise en place d’une plateforme numérique pour accompagner le programme « جسر التمكين والريادة » visant à soutenir l’autonomisation économique des femmes et offrir un accompagnement adapté.",
+      technologies: [
+        "Next.js",
+        "MySQL",
+        "Tailwind Css",
+        "PowerBi",
+        "Python(Pandas)",
+        "ETL",
+      ],
+      features: [
+        "Espace d’information sur le programme",
+        "Calendrier et gestion des sessions de formation",
+        "Espace de suivi et d’accompagnement des projets",
+        "Ressources pédagogiques téléchargeables",
+        "Formulaire de contact et assistance en ligne",
+      ],
+      challenges:
+        "Assurer l’accessibilité de la plateforme pour un public varié et coordonner les partenaires institutionnels.",
+      solution:
+        "Développement web intuitif et responsive, intégrant des outils de suivi et évaluation avec base de données centralisée.",
+      images: [
+        "public/assets/images/project/admin.png",
+        "public/assets/images/project/pageHome.png",
+        "public/assets/images/project/Profil.png",
+      ],
+      demoUrl: "null", // 👉 Masqué
+      githubUrl: "null",
+    },
+    {
+      id: 3,
+      title:
+        "Conception et Développement d’une Application Web d’Institutions Pionnières",
+      category: "web",
+      client:
+        "Académie Régionale de l'Éducation et de la Formation (AREF) Souss Massa",
+      duration: "2 mois",
+      team: "1 stagiaire développeur",
+      status: "Projet de fin d’études - DUT",
+      description:
+        "Développement d’une plateforme régionale pour le suivi et l’évaluation du projet des Institutions pionnières dans 53 écoles primaires de la région Souss Massa. Cette plateforme vise à accompagner la mise en œuvre de la feuille de route éducative 2022-2026 et à renforcer la qualité de l’enseignement primaire.",
+      technologies: [
+        "React.js",
+        "React Bootstrap",
+        "Node.js",
+        "Express.js",
+        "MySQL",
+        "PowerAMC",
+      ],
+      features: [
+        "Gestion des académies, directions et écoles",
+        "Suivi des projets pionniers assignés aux établissements",
+        "Tableaux de bord pour académies, directions et écoles",
+        "Gestion des utilisateurs et des rôles (administrateurs, directeurs, enseignants)",
+        "Ajout, modification et suivi des projets et des élèves",
+        "Ressources et documentation intégrées",
+      ],
+      challenges:
+        "Coordonner les différents acteurs éducatifs (académie, directions, écoles) et assurer la centralisation fiable des données pour un suivi pédagogique efficace.",
+      solution:
+        "Mise en place d’une application web centralisée, intuitive et responsive, avec une base de données relationnelle et des interfaces adaptées aux différents niveaux d’administration (académie, directions, écoles).",
+      images: [
+        "public/assets/images/project/3.png",
+        "public/assets/images/project/1.png",
+        "public/assets/images/project/4.png",
+      ],
+      demoUrl: "null", // Projet académique, pas de démo publique
+      githubUrl: "null",
+    },
   ];
 
+  /* -------------------- Filtrage -------------------- */
   const filteredProjects =
     activeFilter === "all"
       ? projects
       : projects.filter((project) => project.category === activeFilter);
 
+  /* -------------------- Gestion Modal -------------------- */
   const openProjectModal = (project) => {
     setSelectedProject(project);
     setCurrentImageIndex(0);
   };
   const closeProjectModal = () => setSelectedProject(null);
 
-  const nextImage = () => {
-    if (selectedProject) {
-      setCurrentImageIndex(
-        (prev) => (prev + 1) % selectedProject.images.length
-      );
-    }
-  };
+  const nextImage = () =>
+    selectedProject &&
+    setCurrentImageIndex((prev) => (prev + 1) % selectedProject.images.length);
 
-  const prevImage = () => {
-    if (selectedProject) {
-      setCurrentImageIndex(
-        (prev) =>
-          (prev - 1 + selectedProject.images.length) %
-          selectedProject.images.length
-      );
-    }
-  };
+  const prevImage = () =>
+    selectedProject &&
+    setCurrentImageIndex(
+      (prev) =>
+        (prev - 1 + selectedProject.images.length) %
+        selectedProject.images.length
+    );
 
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-950 text-white overflow-hidden py-20">
-      {/* Particles / Glow Background */}
+      {/* Fond animé */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-green-500/20 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-green-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
@@ -108,7 +184,7 @@ const ExperienceShowcase = ({ currentLanguage }) => {
           </p>
         </motion.div>
 
-        {/* Filters */}
+        {/* Filtres */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -131,7 +207,7 @@ const ExperienceShowcase = ({ currentLanguage }) => {
           ))}
         </motion.div>
 
-        {/* Projects Grid */}
+        {/* Liste des projets */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
             <motion.div
@@ -141,11 +217,12 @@ const ExperienceShowcase = ({ currentLanguage }) => {
               transition={{ delay: index * 0.1, duration: 0.8 }}
               className="bg-gray-800 border border-gray-700 rounded-2xl overflow-hidden hover:shadow-lg transition-transform hover:-translate-y-1"
             >
-              <div className="relative h-48 sm:h-56 overflow-hidden">
+              {/* Image principale */}
+              <div className="relative h-40 sm:h-48 overflow-hidden">
                 <img
                   src={project.images[0]}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  className="w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
                 />
                 <div className="absolute top-4 right-4">
                   <span
@@ -160,6 +237,7 @@ const ExperienceShowcase = ({ currentLanguage }) => {
                 </div>
               </div>
 
+              {/* Contenu */}
               <div className="p-6">
                 <h3 className="text-xl font-bold text-white mb-2 line-clamp-2">
                   {project.title}
@@ -168,6 +246,7 @@ const ExperienceShowcase = ({ currentLanguage }) => {
                   {project.description}
                 </p>
 
+                {/* Techno affichées */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.slice(0, 3).map((tech) => (
                     <span
@@ -184,6 +263,7 @@ const ExperienceShowcase = ({ currentLanguage }) => {
                   )}
                 </div>
 
+                {/* Boutons */}
                 <div className="flex flex-wrap gap-2">
                   <Button
                     variant="outline"
@@ -195,15 +275,20 @@ const ExperienceShowcase = ({ currentLanguage }) => {
                   >
                     Détails
                   </Button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => window.open(project.demoUrl, "_blank")}
-                    iconName="ExternalLink"
-                    iconPosition="left"
-                  >
-                    Demo
-                  </Button>
+
+                  {/* Afficher Demo seulement si elle existe */}
+                  {project.demoUrl && project.demoUrl !== "null" && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => window.open(project.demoUrl, "_blank")}
+                      iconName="ExternalLink"
+                      iconPosition="left"
+                    >
+                      Demo
+                    </Button>
+                  )}
+
                   {project.githubUrl && project.githubUrl !== "null" ? (
                     <Button
                       variant="ghost"
@@ -232,7 +317,7 @@ const ExperienceShowcase = ({ currentLanguage }) => {
           ))}
         </div>
 
-        {/* Project Modal */}
+        {/* Modal projet */}
         {selectedProject && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
             <div className="bg-gray-900 border border-gray-700 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6">
@@ -250,26 +335,23 @@ const ExperienceShowcase = ({ currentLanguage }) => {
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
-                {/* Image Slider */}
+                {/* Slider images (plus petites) */}
                 <div>
-                  <div className="relative w-full h-64 mb-4">
+                  <div className="relative w-auto h-52 sm:h-60 mb-4">
                     <motion.img
                       key={currentImageIndex}
                       src={selectedProject.images[currentImageIndex]}
                       alt={selectedProject.title}
-                      className="w-full h-full object-cover rounded-xl"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.5 }}
+                      className="w-full h-full object-contain rounded-xl mx-auto"
                     />
-                    {/* Prev Button */}
+
+                    {/* Boutons slider */}
                     <button
                       onClick={prevImage}
                       className="absolute top-1/2 left-2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full"
                     >
                       <Icon name="ChevronLeft" size={20} />
                     </button>
-                    {/* Next Button */}
                     <button
                       onClick={nextImage}
                       className="absolute top-1/2 right-2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full"
@@ -277,7 +359,8 @@ const ExperienceShowcase = ({ currentLanguage }) => {
                       <Icon name="ChevronRight" size={20} />
                     </button>
                   </div>
-                  {/* Small indicators */}
+
+                  {/* Indicateurs */}
                   <div className="flex justify-center gap-2">
                     {selectedProject.images.map((_, idx) => (
                       <button
@@ -291,6 +374,8 @@ const ExperienceShowcase = ({ currentLanguage }) => {
                       />
                     ))}
                   </div>
+
+                  {/* Infos projet */}
                   <div className="space-y-2 text-gray-300 text-sm mt-4">
                     <div>
                       <Icon name="Building" size={16} /> Client:{" "}
@@ -307,7 +392,7 @@ const ExperienceShowcase = ({ currentLanguage }) => {
                   </div>
                 </div>
 
-                {/* Project Details */}
+                {/* Détails */}
                 <div className="space-y-4 text-gray-300">
                   <div>
                     <h4 className="font-semibold text-white mb-2">
@@ -315,6 +400,7 @@ const ExperienceShowcase = ({ currentLanguage }) => {
                     </h4>
                     <p>{selectedProject.description}</p>
                   </div>
+
                   <div>
                     <h4 className="font-semibold text-white mb-2">
                       Fonctionnalités
@@ -325,6 +411,7 @@ const ExperienceShowcase = ({ currentLanguage }) => {
                       ))}
                     </ul>
                   </div>
+
                   <div>
                     <h4 className="font-semibold text-white mb-2">
                       Technologies
@@ -340,29 +427,48 @@ const ExperienceShowcase = ({ currentLanguage }) => {
                       ))}
                     </div>
                   </div>
+
+                  {/* Boutons modal */}
                   <div className="flex gap-2 mt-4">
-                    <Button
-                      variant="default"
-                      onClick={() =>
-                        window.open(selectedProject.demoUrl, "_blank")
-                      }
-                      iconName="ExternalLink"
-                      iconPosition="left"
-                      className="flex-1"
-                    >
-                      Voir Demo
-                    </Button>
-                    <Button
-                      variant="outline"
-                      onClick={() =>
-                        window.open(selectedProject.githubUrl, "_blank")
-                      }
-                      iconName="Github"
-                      iconPosition="left"
-                      className="flex-1"
-                    >
-                      Code Source
-                    </Button>
+                    {selectedProject.demoUrl &&
+                      selectedProject.demoUrl !== "null" && (
+                        <Button
+                          variant="default"
+                          onClick={() =>
+                            window.open(selectedProject.demoUrl, "_blank")
+                          }
+                          iconName="ExternalLink"
+                          iconPosition="left"
+                          className="flex-1"
+                        >
+                          Voir Demo
+                        </Button>
+                      )}
+
+                    {selectedProject.githubUrl &&
+                    selectedProject.githubUrl !== "null" ? (
+                      <Button
+                        variant="outline"
+                        onClick={() =>
+                          window.open(selectedProject.githubUrl, "_blank")
+                        }
+                        iconName="Github"
+                        iconPosition="left"
+                        className="flex-1"
+                      >
+                        Code Source
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="outline"
+                        disabled
+                        iconName="Lock"
+                        iconPosition="left"
+                        className="cursor-not-allowed opacity-60 flex-1"
+                      >
+                        Privé
+                      </Button>
+                    )}
                   </div>
                 </div>
               </div>

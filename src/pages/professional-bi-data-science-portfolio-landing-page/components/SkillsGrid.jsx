@@ -10,6 +10,9 @@ import {
   faCss3,
   faJs,
   faPhp,
+  faGit,
+  faGithub,
+  faDocker,
 } from "@fortawesome/free-brands-svg-icons";
 import {
   faDatabase,
@@ -53,6 +56,9 @@ const skillIconsMap = {
   "Power BI": faChartBar,
   Tableau: faChartSimple,
   ETL: faRepeat,
+  Git: faGit,
+  GitHub: faGithub,
+  Docker: faDocker,
 };
 
 // Composant SkillIcon
@@ -102,6 +108,9 @@ const SkillsGrid = ({ currentLanguage }) => {
     { name: "Next.js", category: "web" },
     { name: "Node.js", category: "web" },
     { name: "Express.js", category: "web" },
+    { name: "Git", category: "web" },
+    { name: "GitHub", category: "web" },
+    { name: "Docker", category: "web" },
 
     // Hardware
     { name: "Arduino", category: "hardware" },

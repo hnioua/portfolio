@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Icon from "../../../components/AppIcon";
 import Button from "../../../components/ui/Button";
 import Input from "../../../components/ui/Input";
+import emailjs from "emailjs-com";
 
 const ContactForm = ({ currentLanguage }) => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,7 @@ const ContactForm = ({ currentLanguage }) => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
+  const formRef = useRef(null);
 
   const content = {
     fr: {
@@ -69,12 +71,24 @@ const ContactForm = ({ currentLanguage }) => {
     e.preventDefault();
     if (!validate()) return;
     setIsSubmitting(true);
+
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      await emailjs.send(
+        "service_gf0khne", // Ton Service ID
+        "template_upkgdza", // Ton Template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message + " " + formData.email,
+        },
+        "AXJfo-cpQ_x9mxSj3" // Ta Public Key
+      );
+
       setShowSuccess(true);
       setFormData({ name: "", email: "", message: "" });
     } catch (err) {
-      console.error(err);
+      console.error("Erreur envoi email:", err);
+      alert("Une erreur est survenue. Veuillez réessayer.");
     } finally {
       setIsSubmitting(false);
     }
@@ -134,6 +148,7 @@ const ContactForm = ({ currentLanguage }) => {
             </motion.div>
           ) : (
             <motion.form
+              ref={formRef}
               key="form"
               onSubmit={handleSubmit}
               initial={{ opacity: 0 }}
@@ -141,21 +156,30 @@ const ContactForm = ({ currentLanguage }) => {
               exit={{ opacity: 0 }}
               className="space-y-6"
             >
+              {/* Input Name */}
               <Input
-                label="Name"
                 placeholder="Your name"
                 value={formData.name}
                 onChange={(e) => handleInputChange("name", e.target.value)}
                 error={errors.name}
+                className={`text-white placeholder-gray-400 bg-gray-900 border border-gray-700 focus:ring-2 focus:ring-green-600 focus:border-transparent rounded-xl ${
+                  errors.name ? "border-red-500" : ""
+                }`}
               />
+
+              {/* Input Email */}
               <Input
-                label="Email"
                 type="email"
                 placeholder="your.email@example.com"
                 value={formData.email}
                 onChange={(e) => handleInputChange("email", e.target.value)}
                 error={errors.email}
+                className={`text-white placeholder-gray-400 bg-gray-900 border border-gray-700 focus:ring-2 focus:ring-green-600 focus:border-transparent rounded-xl ${
+                  errors.email ? "border-red-500" : ""
+                }`}
               />
+
+              {/* Textarea */}
               <div>
                 <label className="block text-sm font-medium text-gray-200 mb-2">
                   Message
@@ -165,7 +189,7 @@ const ContactForm = ({ currentLanguage }) => {
                   placeholder="Your message..."
                   value={formData.message}
                   onChange={(e) => handleInputChange("message", e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-green-600 focus:border-transparent resize-none bg-gray-900 text-white ${
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-green-600 focus:border-transparent resize-none bg-gray-900 placeholder-gray-400 text-white ${
                     errors.message ? "border-red-500" : "border-gray-700"
                   }`}
                 />
@@ -174,12 +198,13 @@ const ContactForm = ({ currentLanguage }) => {
                 )}
               </div>
 
+              {/* Submit Button */}
               <Button
                 type="submit"
                 disabled={isSubmitting}
                 iconName={isSubmitting ? "Loader2" : "Send"}
                 iconPosition="right"
-                className={`w-full bg-green-500 hover:bg-green-600 ${
+                className={`w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-xl ${
                   isSubmitting ? "animate-pulse" : ""
                 }`}
               >

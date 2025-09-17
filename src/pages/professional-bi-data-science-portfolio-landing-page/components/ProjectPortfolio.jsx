@@ -56,8 +56,9 @@ const ExperienceShowcase = ({ currentLanguage }) => {
       demoUrl: "https://www.taalim.work/",
       githubUrl: "null",
     },
+
     {
-      id: 2,
+      id: 3,
       title:
         "La plateforme du programme Gissr pour l’autonomisation et le leadership",
       categories: ["web", "bi"], // ✅ multi-catégories
@@ -95,7 +96,7 @@ const ExperienceShowcase = ({ currentLanguage }) => {
       githubUrl: "null",
     },
     {
-      id: 3,
+      id: 4,
       title:
         "Conception et Développement d’une Application Web d’Institutions Pionnières",
       categories: ["web"], // ✅ remplacé category → categories
@@ -135,7 +136,55 @@ const ExperienceShowcase = ({ currentLanguage }) => {
       githubUrl: "null",
     },
     {
-      id: 4,
+      id: 2,
+      title:
+        "Methodology for Gene Expression Analysis in Colon Cancer: Biomarker Identification and Pathway Analysis",
+      categories: ["data", "ia", "scientific"], // ⚡ remplacé "ml" par "ia"
+      client:
+        "Faculty of Sciences and Technology, Cadi Ayyad University, Marrakech",
+      duration: "4 mois",
+      team: "Abdessamad Hnioua (Master IAII) & Dr. Oumayma Banouar",
+      status: "Étude scientifique (2025)",
+      description:
+        "Cette recherche applique des techniques d’apprentissage supervisé pour analyser les données d’expression génétique liées au cancer du côlon. L’objectif est d’identifier un nombre minimal de gènes permettant une classification précise entre tissus normaux et tumoraux tout en réduisant la dimensionnalité du dataset.",
+      technologies: [
+        "Python",
+        "Scikit-learn",
+        "Pandas",
+        "NumPy",
+        "Matplotlib",
+        "Google Colab",
+      ],
+      features: [
+        "Prétraitement des données avec normalisation Z-score",
+        "Sélection de gènes basée sur un seuil de corrélation (0.70)",
+        "Équilibrage des classes via Random Oversampling",
+        "Entraînement de modèles ML (Random Forest, SVM, Logistic Regression, KNN, Decision Tree)",
+        "Évaluation avec précision, rappel, F-score, AUC et matrices de confusion",
+      ],
+      metrics: {
+        dataset: "804 échantillons (60 gènes, Kaggle)",
+        bestModel: "Random Forest",
+        selectedGenes: "RNF43, DAO, UGP2",
+        accuracy: "99.5%",
+        f1Score: "0.995",
+      },
+      challenges:
+        "Réduire la dimensionnalité sans perte de performance et gérer l’équilibre des classes.",
+      solution:
+        "Application de la sélection de caractéristiques multi-modèles, validation croisée à 5 plis, et évaluation par plusieurs métriques pour garantir la robustesse.",
+      images: [
+        "public/assets/images/project/gene_expression_pipeline.png",
+        "public/assets/images/project/approche.png",
+      ],
+      demoUrl:
+        "https://colab.research.google.com/github/hnioua/Gene-Expression-Analysis-in-Colorectal-Cancer-Using-Machine-Learning/blob/main/MR_Analyse_de_l'Expression_des_G%C3%A8nes_du_Cancer_du_C%C3%B4lon_Hnioua_Abdessamad.ipynb",
+      githubUrl:
+        "https://github.com/hnioua/Gene-Expression-Analysis-in-Colorectal-Cancer-Using-Machine-Learning/blob/main/MR_Analyse_de_l'Expression_des_G%C3%A8nes_du_Cancer_du_C%C3%B4lon_Hnioua_Abdessamad.ipynb", // ⚡ GitHub public
+      pdfUrl: "/assets/docs/colon_cancer_article.pdf", // ⚡ ton article PDF
+    },
+    {
+      id: 5,
       title: "GREEN SHIELD – Assistance Policière en Milieu de Foule (APMF)",
       categories: ["ia", "robotique", "iot"],
       client:
@@ -357,6 +406,32 @@ const ExperienceShowcase = ({ currentLanguage }) => {
                       Privé
                     </Button>
                   )}
+
+                  {/* Lien Dataset si existe et vient de Kaggle */}
+                  {project.demoUrl && project.demoUrl.includes("kaggle") && (
+                    <Button
+                      variant="secondary"
+                      onClick={() => window.open(project.demoUrl, "_blank")}
+                      iconName="Database"
+                      iconPosition="left"
+                      className="flex-1"
+                    >
+                      Dataset
+                    </Button>
+                  )}
+
+                  {/* Bouton télécharger PDF si dispo */}
+                  {project.pdfUrl && (
+                    <Button
+                      variant="default"
+                      onClick={() => window.open(project.pdfUrl, "_blank")}
+                      iconName="FileDown"
+                      iconPosition="left"
+                      className="flex-1"
+                    >
+                      Télécharger Article
+                    </Button>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -381,7 +456,7 @@ const ExperienceShowcase = ({ currentLanguage }) => {
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
-                {/* Slider images (plus petites) */}
+                {/* Slider images */}
                 <div>
                   <div className="relative w-auto h-52 sm:h-60 mb-4">
                     <motion.img

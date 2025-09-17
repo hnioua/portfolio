@@ -17,7 +17,6 @@ const ExperienceShowcase = ({ currentLanguage }) => {
     { id: "bi", label: "Business Intelligence", icon: "PieChart" },
     { id: "ia", label: "Intelligence Artificielle", icon: "Brain" },
     { id: "iot", label: "Internet des Objets (IoT)", icon: "Cpu" },
-    { id: "robotique", label: "Robotique & Systèmes embarqués", icon: "Bot" },
   ];
 
   /* -------------------- Projets -------------------- */
@@ -174,7 +173,7 @@ const ExperienceShowcase = ({ currentLanguage }) => {
       solution:
         "Application de la sélection de caractéristiques multi-modèles, validation croisée à 5 plis, et évaluation par plusieurs métriques pour garantir la robustesse.",
       images: [
-        "public/assets/images/project/gene_expression_pipeline.png",
+        "public/assets/images/project/Article.png",
         "public/assets/images/project/approche.png",
       ],
       demoUrl:

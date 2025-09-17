@@ -12,9 +12,12 @@ const ExperienceShowcase = ({ currentLanguage }) => {
   const filterCategories = [
     { id: "all", label: "Tous les Projets", icon: "Grid3X3" },
     { id: "web", label: "Développement Web", icon: "Globe" },
-    { id: "mobile", label: "Applications Mobile", icon: "Smartphone" },
+    { id: "mobile", label: "Applications Mobiles", icon: "Smartphone" },
     { id: "data", label: "Analyse de Données", icon: "BarChart3" },
     { id: "bi", label: "Business Intelligence", icon: "PieChart" },
+    { id: "ia", label: "Intelligence Artificielle", icon: "Brain" },
+    { id: "iot", label: "Internet des Objets (IoT)", icon: "Cpu" },
+    { id: "robotique", label: "Robotique & Systèmes embarqués", icon: "Bot" },
   ];
 
   /* -------------------- Projets -------------------- */
@@ -22,7 +25,7 @@ const ExperienceShowcase = ({ currentLanguage }) => {
     {
       id: 1,
       title: "Plateforme Taalim Work",
-      category: "web",
+      categories: ["web"], // ✅ remplacé category → categories
       client: "TaalimWork",
       duration: "2 mois",
       team: "2 développeurs",
@@ -57,7 +60,7 @@ const ExperienceShowcase = ({ currentLanguage }) => {
       id: 2,
       title:
         "La plateforme du programme Gissr pour l’autonomisation et le leadership",
-      category: "web",
+      categories: ["web", "bi"], // ✅ multi-catégories
       client: "Agence de Développement Social (ADS) Rabat",
       duration: "3 mois",
       team: "3 développeurs",
@@ -88,14 +91,14 @@ const ExperienceShowcase = ({ currentLanguage }) => {
         "public/assets/images/project/pageHome.png",
         "public/assets/images/project/Profil.png",
       ],
-      demoUrl: "null", // 👉 Masqué
+      demoUrl: "null",
       githubUrl: "null",
     },
     {
       id: 3,
       title:
         "Conception et Développement d’une Application Web d’Institutions Pionnières",
-      category: "web",
+      categories: ["web"], // ✅ remplacé category → categories
       client:
         "Académie Régionale de l'Éducation et de la Formation (AREF) Souss Massa",
       duration: "2 mois",
@@ -131,13 +134,56 @@ const ExperienceShowcase = ({ currentLanguage }) => {
       demoUrl: "null", // Projet académique, pas de démo publique
       githubUrl: "null",
     },
+    {
+      id: 4,
+      title: "GREEN SHIELD – Assistance Policière en Milieu de Foule (APMF)",
+      categories: ["ia", "robotique", "iot"],
+      client:
+        "Challenge Robovation 2025 – en pré-incubation (Cité d’Innovation Marrakech)",
+      duration: "Prototype en cours (depuis 2025)",
+      team: "1 porteur de projet (Hnioua Abdessamad)",
+      status: "Pré-incubation / Prototype",
+      description:
+        "Robot mobile autonome destiné à la sécurité en milieu de foule. Il intègre la reconnaissance faciale, la détection d’anomalies, des capteurs de fumée et température, ainsi qu’un système d’extinction automatisé. Fonctionnant à 100 % à l’énergie solaire, il assure assistance et communication sécurisée en temps réel.",
+      technologies: [
+        "Arduino",
+        "ESP32-CAM",
+        "Capteurs DHT11 / flamme / ultrasons",
+        "Firebase",
+        "React.js",
+        "Node.js",
+        "IA (reconnaissance faciale & gestuelle)",
+      ],
+      features: [
+        "Détection d’incendie et activation automatique d’une pompe à eau",
+        "Reconnaissance faciale et détection des personnes en détresse",
+        "Communication chiffrée en temps réel avec plateforme centrale",
+        "Dashboard web de supervision (visualisation des données et vidéo)",
+        "Fonctionnement 100 % énergie solaire renouvelable",
+      ],
+      challenges:
+        "Sécuriser les grands rassemblements (Coupe du Monde 2030, événements touristiques) tout en garantissant une autonomie énergétique et une fiabilité en milieu réel.",
+      solution:
+        "Un robot intelligent, autonome et écologique combinant robotique, IA et IoT, développé en partenariat avec la Cité d’Innovation Marrakech. Le prototype a obtenu la 3e place au Challenge Robovation 2025.",
+      images: [
+        "public/assets/images/project/GreenS2.png",
+        "public/assets/images/project/GreenS3.png",
+        "public/assets/images/project/GreenS1.jpeg",
+        "public/assets/images/project/dashArduino.png",
+      ],
+      demoUrl: "null",
+      githubUrl: "null",
+    },
   ];
 
   /* -------------------- Filtrage -------------------- */
   const filteredProjects =
     activeFilter === "all"
       ? projects
-      : projects.filter((project) => project.category === activeFilter);
+      : projects.filter(
+          (project) =>
+            project.categories && project.categories.includes(activeFilter)
+        );
 
   /* -------------------- Gestion Modal -------------------- */
   const openProjectModal = (project) => {

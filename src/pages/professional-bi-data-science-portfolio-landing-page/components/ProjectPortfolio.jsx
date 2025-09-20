@@ -55,7 +55,45 @@ const ExperienceShowcase = ({ currentLanguage }) => {
       demoUrl: "https://www.taalim.work/",
       githubUrl: "null",
     },
+    {
+      id: 2,
+      title: "Éditeur / Compilateur C en ligne",
+      categories: ["web", "développement"],
+      client: "Projet personnel",
+      duration: "3 mois",
+      team: "3 développeur",
+      status: "Production",
+      description:
+        "Éditeur et compilateur en ligne du langage C, conçu pour être simple, rapide et professionnel. La plateforme permet de coder directement depuis un navigateur, de compiler et d’exécuter des programmes C avec une expérience fluide et moderne.",
+      technologies: [
+        "React",
+        "Node.js",
+        "Express",
+        "Mysql",
+        "GCC",
+        "Websocket",
+      ],
+      features: [
+        "Gestion intuitive des fichiers C (création, édition, sauvegarde)",
+        "Compilation et exécution de code en temps réel",
+        "Partage simplifié des projets avec d’autres développeurs",
+        "Compte utilisateur pour sauvegarder et retrouver ses projets",
+        "Interface administrateur complète pour gérer utilisateurs et projets",
+        "Collaboration en temps réel",
+        "Formulaire de contact intégré",
+      ],
 
+      challenges:
+        "Intégrer la compilation sécurisée de code C en ligne et gérer l’isolation des processus pour éviter tout abus.",
+      solution:
+        "Utilisation d’un backend Node.js couplé à GCC dans des conteneurs Docker isolés, avec une interface moderne en React et une base de données MongoDB pour gérer les projets et utilisateurs.",
+      images: [
+        "public/assets/images/project/C1.png",
+        "public/assets/images/project/CompilerOutput.png",
+      ],
+      demoUrl: "https://online-compiler-font-end.vercel.app/", // ✅ à remplacer par ton lien de déploiement
+      githubUrl: "https://github.com/hnioua/Online-Compiler", // ✅ repo GitHub
+    },
     {
       id: 3,
       title:
@@ -222,6 +260,57 @@ const ExperienceShowcase = ({ currentLanguage }) => {
       demoUrl: "null",
       githubUrl: "null",
     },
+    {
+      id: 6,
+      title:
+        "Extraction du Texte à partir d’Images à Faible Résolution (OCR robuste)",
+      categories: ["ia", "vision", "dl"],
+      client:
+        "Faculté des Sciences et Techniques – Module Traitement d’Images et Vision par Ordinateur",
+      duration: "Année universitaire 2024/2025",
+      team: "Zakariae Laaliji & Abdessamad Hnioua (Master IAII)",
+      status: "Projet académique validé (2025)",
+      description:
+        "Développement d’une solution OCR robuste pour extraire du texte à partir d’images dégradées (faible résolution, bruit, flou, compression). Le projet combine des techniques avancées de traitement d’images et des modèles de Deep Learning afin d’améliorer la reconnaissance optique de caractères dans des conditions difficiles.",
+      technologies: [
+        "Python",
+        "OpenCV",
+        "TensorFlow / Keras",
+        "MobileNetV2 (Transfer Learning)",
+        "Keras Tuner",
+        "Tesseract OCR",
+        "Google Colab",
+      ],
+      features: [
+        "Prétraitement d’images : réduction du bruit (Gaussien, sel & poivre), amélioration du contraste, égalisation d’histogramme",
+        "Simulation de dégradations (compression JPEG, flou, redimensionnement)",
+        "Segmentation et équilibrage du dataset (SMOTE)",
+        "Encodage One-Hot pour lettres et chiffres",
+        "Architecture CNN basée sur MobileNetV2 avec transfert d’apprentissage",
+        "Optimisation des hyperparamètres avec Keras Tuner",
+        "Évaluation via précision, rappel, F1-score et matrice de confusion",
+      ],
+      metrics: {
+        dataset: "Images dégradées synthétiquement (32×32 et 64×64)",
+        bestModel: "MobileNetV2 optimisé",
+        accuracy: "97.8%",
+        f1Score: "0.976",
+        robustness: "Résistant au bruit et aux variations de luminosité",
+      },
+      challenges:
+        "Améliorer la robustesse de l’OCR face aux images dégradées et optimiser le modèle CNN avec un dataset limité.",
+      solution:
+        "Combinaison de prétraitements avancés (bruit, flou, compression) et d’un modèle CNN optimisé par transfert d’apprentissage (MobileNetV2), validé avec une approche systématique et multi-métriques.",
+      images: [
+        "public/assets/images/project/OCR1.png",
+        "public/assets/images/project/OCR2.png",
+        "public/assets/images/project/6.png",
+      ],
+      demoUrl: "null",
+      githubUrl:
+        "https://github.com/hnioua/OCR-Text-Recognition-in-Challenging-Conditions",
+      pdfUrl: "/assets/docs/Rapport_Traitement_d_images.pdf",
+    },
   ];
 
   /* -------------------- Filtrage -------------------- */
@@ -253,7 +342,7 @@ const ExperienceShowcase = ({ currentLanguage }) => {
     );
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-950 text-white overflow-hidden py-20">
+    <section className="relative min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-950 text-white overflow-hidden py-20 font-sans">
       {/* Fond animé */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-green-500/20 rounded-full blur-3xl animate-pulse" />
@@ -269,10 +358,10 @@ const ExperienceShowcase = ({ currentLanguage }) => {
           transition={{ duration: 1 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-green-400 mb-6">
+          <h2 className="text-4xl md:text-5xl font-heading text-green-400 mb-6">
             Expérience & Projets
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto font-sans">
             Portfolio de projets réalisés avec impact mesurable, démontrant
             expertise technique et solutions innovantes.
           </p>
@@ -333,10 +422,10 @@ const ExperienceShowcase = ({ currentLanguage }) => {
 
               {/* Contenu */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2 line-clamp-2">
+                <h3 className="text-xl font-heading text-white mb-2 line-clamp-2">
                   {project.title}
                 </h3>
-                <p className="text-gray-300 text-sm mb-4 line-clamp-3">
+                <p className="text-gray-300 text-sm mb-4 line-clamp-3 font-sans">
                   {project.description}
                 </p>
 
@@ -370,7 +459,6 @@ const ExperienceShowcase = ({ currentLanguage }) => {
                     Détails
                   </Button>
 
-                  {/* Afficher Demo seulement si elle existe */}
                   {project.demoUrl && project.demoUrl !== "null" && (
                     <Button
                       variant="ghost"
@@ -406,20 +494,6 @@ const ExperienceShowcase = ({ currentLanguage }) => {
                     </Button>
                   )}
 
-                  {/* Lien Dataset si existe et vient de Kaggle */}
-                  {project.demoUrl && project.demoUrl.includes("kaggle") && (
-                    <Button
-                      variant="secondary"
-                      onClick={() => window.open(project.demoUrl, "_blank")}
-                      iconName="Database"
-                      iconPosition="left"
-                      className="flex-1"
-                    >
-                      Dataset
-                    </Button>
-                  )}
-
-                  {/* Bouton télécharger PDF si dispo */}
                   {project.pdfUrl && (
                     <Button
                       variant="default"
@@ -439,11 +513,11 @@ const ExperienceShowcase = ({ currentLanguage }) => {
 
         {/* Modal projet */}
         {selectedProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm font-sans">
             <div className="bg-gray-900 border border-gray-700 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6">
               {/* Header */}
               <div className="flex justify-between items-center mb-6 sticky top-0 bg-gray-900 border-b border-gray-700 p-4">
-                <h3 className="text-2xl font-bold text-white">
+                <h3 className="text-2xl font-heading text-white">
                   {selectedProject.title}
                 </h3>
                 <Button
@@ -515,14 +589,14 @@ const ExperienceShowcase = ({ currentLanguage }) => {
                 {/* Détails */}
                 <div className="space-y-4 text-gray-300">
                   <div>
-                    <h4 className="font-semibold text-white mb-2">
+                    <h4 className="font-heading text-white mb-2">
                       Description
                     </h4>
                     <p>{selectedProject.description}</p>
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-white mb-2">
+                    <h4 className="font-heading text-white mb-2">
                       Fonctionnalités
                     </h4>
                     <ul className="list-disc list-inside">
@@ -533,7 +607,7 @@ const ExperienceShowcase = ({ currentLanguage }) => {
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-white mb-2">
+                    <h4 className="font-heading text-white mb-2">
                       Technologies
                     </h4>
                     <div className="flex flex-wrap gap-2">

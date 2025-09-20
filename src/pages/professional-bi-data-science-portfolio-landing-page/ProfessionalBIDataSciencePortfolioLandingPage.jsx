@@ -92,7 +92,14 @@ const ProfessionalBIDataSciencePortfolioLandingPage = () => {
   const currentLang = languages.find((lang) => lang.code === currentLanguage);
 
   return (
-    <div className="relative min-h-screen text-green-400 overflow-hidden">
+    <div
+      className="relative min-h-screen text-green-400 overflow-hidden"
+      style={{
+        fontFamily:
+          "'JetBrains Mono', 'Fira Code', 'Source Code Pro', 'Monaco', 'Consolas', monospace",
+        letterSpacing: "0.5px",
+      }}
+    >
       {/* Background Digital */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-black -z-10">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/circuit-board.png')] opacity-10 animate-pulse"></div>

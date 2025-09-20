@@ -60,9 +60,8 @@
     "tailwindcss-fluid-type": "^2.0.7"
   },
   "scripts": {
-    "start": "vite",
-    "build": "vite build --sourcemap",
-    "serve": "vite preview"
+    "start": "react-scripts start",
+    "build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": [
@@ -94,4 +93,5 @@
     "vite": "5.0.0",
     "vite-tsconfig-paths": "3.6.0"
   }
+
 }

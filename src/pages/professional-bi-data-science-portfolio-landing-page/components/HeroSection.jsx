@@ -275,7 +275,7 @@ const HeroSection = ({ onScrollToSection, currentLanguage = "fr" }) => {
 
               <div className="relative w-80 h-80 rounded-full border-4 border-dashed border-green-400 flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden shadow-2xl mx-auto">
                 <img
-                  src="/assets/images/ProfilAvatar.png"
+                  src="/assets/images/ProfilAvatar.webp"
                   alt="Abdessamad Hnioua Profile"
                   className="w-72 h-72 rounded-full object-cover z-10 relative"
                 />

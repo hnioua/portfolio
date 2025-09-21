@@ -49,8 +49,8 @@ const ExperienceShowcase = ({ currentLanguage }) => {
       solution:
         "Architecture full-stack (React/Node.js), PostgreSQL optimisé et déploiement scalable via Docker.",
       images: [
-        "public/assets/images/project/PC.webp",
-        "public/assets/images/project/PageHomePc.webp",
+        "/assets/images/project/PC.webp",
+        "/assets/images/project/PageHomePc.webp",
       ],
       demoUrl: "https://www.taalim.work/",
       githubUrl: "null",
@@ -88,8 +88,8 @@ const ExperienceShowcase = ({ currentLanguage }) => {
       solution:
         "Utilisation d’un backend Node.js couplé à GCC dans des conteneurs Docker isolés, avec une interface moderne en React et une base de données MongoDB pour gérer les projets et utilisateurs.",
       images: [
-        "public/assets/images/project/C1.webp",
-        "public/assets/images/project/CompilerOutput.webp",
+        "/assets/images/project/C1.webp",
+        "/assets/images/project/CompilerOutput.webp",
       ],
       demoUrl: "https://online-compiler-font-end.vercel.app/", // ✅ à remplacer par ton lien de déploiement
       githubUrl: "https://github.com/hnioua/Online-Compiler", // ✅ repo GitHub
@@ -125,9 +125,9 @@ const ExperienceShowcase = ({ currentLanguage }) => {
       solution:
         "Développement web intuitif et responsive, intégrant des outils de suivi et évaluation avec base de données centralisée.",
       images: [
-        "public/assets/images/project/admin.webp",
-        "public/assets/images/project/pageHome.webp",
-        "public/assets/images/project/Profil.webp",
+        "/assets/images/project/admin.webp",
+        "/assets/images/project/pageHome.webp",
+        "/assets/images/project/Profil.webp",
       ],
       demoUrl: "null",
       githubUrl: "null",
@@ -165,9 +165,9 @@ const ExperienceShowcase = ({ currentLanguage }) => {
       solution:
         "Mise en place d’une application web centralisée, intuitive et responsive, avec une base de données relationnelle et des interfaces adaptées aux différents niveaux d’administration (académie, directions, écoles).",
       images: [
-        "public/assets/images/project/3.webp",
-        "public/assets/images/project/1.webp",
-        "public/assets/images/project/4.webp",
+        "/assets/images/project/3.webp",
+        "/assets/images/project/1.webp",
+        "/assets/images/project/4.webp",
       ],
       demoUrl: "null", // Projet académique, pas de démo publique
       githubUrl: "null",
@@ -211,8 +211,8 @@ const ExperienceShowcase = ({ currentLanguage }) => {
       solution:
         "Application de la sélection de caractéristiques multi-modèles, validation croisée à 5 plis, et évaluation par plusieurs métriques pour garantir la robustesse.",
       images: [
-        "public/assets/images/project/Article.webp",
-        "public/assets/images/project/approche.webp",
+        "/assets/images/project/Article.webp",
+        "/assets/images/project/approche.webp",
       ],
       demoUrl:
         "https://colab.research.google.com/github/hnioua/Gene-Expression-Analysis-in-Colorectal-Cancer-Using-Machine-Learning/blob/main/MR_Analyse_de_l'Expression_des_G%C3%A8nes_du_Cancer_du_C%C3%B4lon_Hnioua_Abdessamad.ipynb",
@@ -252,10 +252,10 @@ const ExperienceShowcase = ({ currentLanguage }) => {
       solution:
         "Un robot intelligent, autonome et écologique combinant robotique, IA et IoT, développé en partenariat avec la Cité d’Innovation Marrakech. Le prototype a obtenu la 3e place au Challenge Robovation 2025.",
       images: [
-        "public/assets/images/project/GreenS2.webp",
-        "public/assets/images/project/GreenS3.webp",
-        "public/assets/images/project/GreenS1.webp",
-        "public/assets/images/project/dashArduino.webp",
+        "/assets/images/project/GreenS2.webp",
+        "/assets/images/project/GreenS3.webp",
+        "/assets/images/project/GreenS1.webp",
+        "/assets/images/project/dashArduino.webp",
       ],
       demoUrl: "null",
       githubUrl: "null",
@@ -302,9 +302,9 @@ const ExperienceShowcase = ({ currentLanguage }) => {
       solution:
         "Combinaison de prétraitements avancés (bruit, flou, compression) et d’un modèle CNN optimisé par transfert d’apprentissage (MobileNetV2), validé avec une approche systématique et multi-métriques.",
       images: [
-        "public/assets/images/project/OCR1.webp",
-        "public/assets/images/project/OCR2.webp",
-        "public/assets/images/project/6.webp",
+        "/assets/images/project/OCR1.webp",
+        "/assets/images/project/OCR2.webp",
+        "/assets/images/project/6.webp",
       ],
       demoUrl: "null",
       githubUrl:

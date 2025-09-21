@@ -20,12 +20,6 @@ const SolutionShowcase = ({ currentLanguage }) => {
       description: `A holistic approach combining technical expertise, 
       business understanding, and cutting-edge technologies to maximize your data value.`,
     },
-    ar: {
-      title: "حلول ذكاء الأعمال وعلوم البيانات المخصصة",
-      subtitle: "حول تحديات البيانات إلى مزايا تنافسية",
-      description: `نهج شامل يجمع بين الخبرة التقنية، 
-      فهم الأعمال، والتقنيات المتطورة لتعظيم قيمة بياناتك.`,
-    },
   };
 
   const expertiseAreas = {

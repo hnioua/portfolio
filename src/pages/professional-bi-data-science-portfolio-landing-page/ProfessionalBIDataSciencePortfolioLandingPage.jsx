@@ -109,7 +109,7 @@ const ProfessionalBIDataSciencePortfolioLandingPage = () => {
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-20 transition-colors duration-300 ${
           isScrolled
             ? "bg-gray-900/95 backdrop-blur-md shadow-lg border-b border-green-700"
             : "bg-transparent"

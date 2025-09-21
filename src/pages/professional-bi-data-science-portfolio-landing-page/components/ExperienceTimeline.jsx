@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import {
   GraduationCap,
-  Briefcase,
   Building,
   MapPin,
   Calendar,
@@ -11,272 +10,121 @@ import {
   ChevronDown,
 } from "lucide-react";
 
-const ExperienceTimeline = ({ currentLanguage = "fr" }) => {
+const AcademicTimeline = ({ currentLanguage = "fr" }) => {
   const [expandedItem, setExpandedItem] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
-  // Définition des couleurs
-  const colorClasses = {
-    green: {
-      accent: "bg-gradient-to-br from-green-500 to-green-600",
-      icon: "text-white",
-      border: "border-green-500",
-      bg: "bg-green-500/20",
-    },
-  };
-
-  // Fonction pour rendre les icônes
-  const renderIcon = (iconName, size = 20, className = "") => {
-    const iconProps = { size, className };
-
-    switch (iconName) {
-      case "GraduationCap":
-        return <GraduationCap {...iconProps} />;
-      case "Briefcase":
-        return <Briefcase {...iconProps} />;
-      case "Building":
-        return <Building {...iconProps} />;
-      case "MapPin":
-        return <MapPin {...iconProps} />;
-      case "Calendar":
-        return <Calendar {...iconProps} />;
-      case "Clock":
-        return <Clock {...iconProps} />;
-      case "CheckCircle":
-        return <CheckCircle {...iconProps} />;
-      case "ChevronUp":
-        return <ChevronUp {...iconProps} />;
-      case "ChevronDown":
-        return <ChevronDown {...iconProps} />;
-      default:
-        return <div {...iconProps} />;
-    }
-  };
-
   const content = {
     fr: {
-      title: "Parcours Académique",
-      subtitle:
-        "Une progression constante vers l'excellence en BI & Data Science",
-      description:
-        "Formation solide et expérience pratique dans des organismes de référence au Maroc",
+      title: "Formation Académique",
+      subtitle: "Progression vers l'excellence en BI & Data Science",
+      achievements: "Réalisations Clés",
+      technologies: "Technologies",
+      skills: "Compétences",
     },
     en: {
-      title: "Academic Journey",
-      subtitle: "Constant progression towards excellence in BI & Data Science",
-      description:
-        "Solid training and practical experience in leading organizations in Morocco",
+      title: "Academic Background",
+      subtitle: "Progression towards excellence in BI & Data Science",
+      achievements: "Key Achievements",
+      technologies: "Technologies",
+      skills: "Skills",
     },
   };
 
+  // Données académiques simplifiées
   const timelineData = {
     fr: [
       {
         id: 1,
-        type: "education",
-        title: "Master Intelligence Artificielle et Ingénierie Informatique",
-        organization: "Université Cadi Ayyad, FST Marrakech",
-        location: "Marrakech, Maroc",
+        title: "Master IA & Ingénierie Informatique",
+        organization: "FST Marrakech",
+        location: "Marrakech",
         period: "2024 - Présent",
         duration: "En cours",
-        logo: "/assets/images/fst-logo.png",
-        description:
-          "Spécialisation en Data Science et aide à la décision, Intelligence artificielle, machine learning, traitement d'images",
+        description: "Spécialisation Data Science, IA et aide à la décision.",
         achievements: [
-          "Spécialisation en Data Science et aide à la décision",
-          "Intelligence artificielle, machine learning, traitement d'images",
+          "Spécialisation Data Science & IA",
+          "Machine Learning & Vision par ordinateur",
         ],
-        technologies: [
-          "Python",
-          "TensorFlow",
-          "Keras",
-          "OpenCV",
-          "Scikit-learn",
-        ],
-        skills: [
-          "Data Science",
-          "AI",
-          "Machine Learning",
-          "Image Processing",
-          "Decision Support",
-        ],
-        color: "green",
+        technologies: ["Python", "TensorFlow", "Scikit-learn", "OpenCV"],
+        skills: ["Data Science", "IA", "Machine Learning"],
       },
       {
         id: 2,
-        type: "education",
-        title: "Licence Professionnelle en Informatique Décisionnelle",
-        organization: "Université Mohammed Premier, EST Oujda",
-        location: "Oujda, Maroc",
+        title: "Licence Pro Informatique Décisionnelle",
+        organization: "EST Oujda",
+        location: "Oujda",
         period: "2023 - 2024",
-        duration: "1 ans",
-        logo: "/assets/images/est-logo.png",
+        duration: "1 an",
         description:
-          "Mention très bien, Cours principaux: Business Intelligence, Data Warehouse, Analyse de données",
+          "Mention très bien - Business Intelligence et analyse de données.",
         achievements: [
           "Mention très bien",
-          "Cours principaux: Business Intelligence, Data Warehouse, Analyse de données",
+          "Spécialisation BI & Data Warehouse",
         ],
-        technologies: ["SQL", "Power BI", "Excel", "Python"],
-        skills: ["Business Intelligence", "Data Analysis", "Data Warehousing"],
-        color: "green",
+        technologies: ["SQL", "Power BI", "Python", "Excel"],
+        skills: ["Business Intelligence", "Analyse de données"],
       },
       {
         id: 3,
-        type: "education",
-        title: "Diplôme Universitaire de Technologie en Génie Informatique",
-        organization: "Université Cadi Ayyad, EST Safi",
-        location: "Safi, Maroc",
+        title: "DUT Génie Informatique",
+        organization: "EST Safi",
+        location: "Safi",
         period: "2021 - 2023",
         duration: "2 ans",
-        logo: "/assets/images/est-safi-logo.png",
-        description: "Mention assez bien, Formation technique en informatique",
+        description: "Formation technique complète en développement logiciel.",
         achievements: [
-          "Mention assez bien",
-          "Formation technique en informatique",
+          "Formation technique solide",
+          "Développement full-stack",
         ],
         technologies: ["PHP", "MySQL", "JavaScript", "C++"],
-        skills: ["Programming", "Database Design", "Software Development"],
-        color: "green",
+        skills: ["Programmation", "Base de données", "Développement web"],
       },
     ],
     en: [
       {
         id: 1,
-        type: "education",
-        title: "Master in Artificial Intelligence and Computer Engineering",
-        organization: "Cadi Ayyad University, FST Marrakech",
-        location: "Marrakech, Morocco",
+        title: "Master AI & Computer Engineering",
+        organization: "FST Marrakech",
+        location: "Marrakech",
         period: "2024 - Present",
         duration: "Ongoing",
-        logo: "/assets/images/fst-logo.png",
-        description:
-          "Specialization in Data Science, Decision Support, Artificial Intelligence, Machine Learning, and Image Processing",
+        description: "Specialization in Data Science, AI and decision support.",
         achievements: [
-          "Specialization in Data Science and Decision Support",
-          "Artificial Intelligence, Machine Learning, Image Processing",
+          "Data Science & AI specialization",
+          "Machine Learning & Computer Vision",
         ],
-        technologies: [
-          "Python",
-          "TensorFlow",
-          "Keras",
-          "OpenCV",
-          "Scikit-learn",
-        ],
-        skills: [
-          "Data Science",
-          "AI",
-          "Machine Learning",
-          "Image Processing",
-          "Decision Support",
-        ],
-        color: "green",
+        technologies: ["Python", "TensorFlow", "Scikit-learn", "OpenCV"],
+        skills: ["Data Science", "AI", "Machine Learning"],
       },
       {
         id: 2,
-        type: "education",
-        title: "Professional Bachelor's Degree in Business Intelligence",
-        organization: "Mohammed Premier University, EST Oujda",
-        location: "Oujda, Morocco",
+        title: "Professional Bachelor Business Intelligence",
+        organization: "EST Oujda",
+        location: "Oujda",
         period: "2023 - 2024",
         duration: "1 year",
-        logo: "/assets/images/est-logo.png",
         description:
-          "Graduated with honors. Main courses: Business Intelligence, Data Warehouse, Data Analysis",
+          "Graduated with honors - Business Intelligence and data analysis.",
         achievements: [
           "Graduated with honors",
-          "Main courses: Business Intelligence, Data Warehouse, Data Analysis",
+          "BI & Data Warehouse specialization",
         ],
-        technologies: ["SQL", "Power BI", "Excel", "Python"],
-        skills: ["Business Intelligence", "Data Analysis", "Data Warehousing"],
-        color: "green",
+        technologies: ["SQL", "Power BI", "Python", "Excel"],
+        skills: ["Business Intelligence", "Data Analysis"],
       },
       {
         id: 3,
-        type: "education",
-        title: "University Diploma of Technology in Computer Engineering",
-        organization: "Cadi Ayyad University, EST Safi",
-        location: "Safi, Morocco",
+        title: "DUT Computer Engineering",
+        organization: "EST Safi",
+        location: "Safi",
         period: "2021 - 2023",
         duration: "2 years",
-        logo: "/assets/images/est-safi-logo.png",
-        description:
-          "Graduated with merit. Technical training in computer science",
-        achievements: [
-          "Graduated with merit",
-          "Technical training in computer science",
-        ],
+        description: "Complete technical training in software development.",
+        achievements: ["Solid technical foundation", "Full-stack development"],
         technologies: ["PHP", "MySQL", "JavaScript", "C++"],
-        skills: ["Programming", "Database Design", "Software Development"],
-        color: "green",
-      },
-    ],
-    ar: [
-      {
-        id: 1,
-        type: "education",
-        title: "ماجستير في الذكاء الاصطناعي وهندسة الحاسوب",
-        organization: "جامعة القاضي عياض، كلية العلوم والتقنيات مراكش",
-        location: "مراكش، المغرب",
-        period: "2024 - الحاضر",
-        duration: "جاري",
-        logo: "/assets/images/fst-logo.png",
-        description:
-          "تخصص في علوم البيانات ودعم القرار والذكاء الاصطناعي والتعلم الآلي ومعالجة الصور",
-        achievements: [
-          "تخصص في علوم البيانات ودعم القرار",
-          "الذكاء الاصطناعي والتعلم الآلي ومعالجة الصور",
-        ],
-        technologies: [
-          "Python",
-          "TensorFlow",
-          "Keras",
-          "OpenCV",
-          "Scikit-learn",
-        ],
-        skills: [
-          "علوم البيانات",
-          "الذكاء الاصطناعي",
-          "التعلم الآلي",
-          "معالجة الصور",
-          "دعم القرار",
-        ],
-        color: "green",
-      },
-      {
-        id: 2,
-        type: "education",
-        title: "إجازة مهنية في المعلوماتية القرارية",
-        organization: "جامعة محمد الأول، المدرسة العليا للتكنولوجيا وجدة",
-        location: "وجدة، المغرب",
-        period: "2023 - 2024",
-        duration: "سنة واحدة",
-        logo: "/assets/images/est-logo.png",
-        description:
-          "تخرج بامتياز. المواد الرئيسية: ذكاء الأعمال، مستودع البيانات، تحليل البيانات",
-        achievements: [
-          "تخرج بامتياز",
-          "المواد الرئيسية: ذكاء الأعمال، مستودع البيانات، تحليل البيانات",
-        ],
-        technologies: ["SQL", "Power BI", "Excel", "Python"],
-        skills: ["ذكاء الأعمال", "تحليل البيانات", "مستودع البيانات"],
-        color: "green",
-      },
-      {
-        id: 3,
-        type: "education",
-        title: "دبلوم جامعي في التكنولوجيا - هندسة المعلوماتية",
-        organization: "جامعة القاضي عياض، المدرسة العليا للتكنولوجيا آسفي",
-        location: "آسفي، المغرب",
-        period: "2021 - 2023",
-        duration: "سنتان",
-        logo: "/assets/images/est-safi-logo.png",
-        description: "تخرج بتقدير جيد. تدريب تقني في علوم الحاسوب",
-        achievements: ["تخرج بتقدير جيد", "تدريب تقني في علوم الحاسوب"],
-        technologies: ["PHP", "MySQL", "JavaScript", "C++"],
-        skills: ["البرمجة", "تصميم قواعد البيانات", "تطوير البرمجيات"],
-        color: "green",
+        skills: ["Programming", "Database", "Web Development"],
       },
     ],
   };
@@ -288,7 +136,7 @@ const ExperienceTimeline = ({ currentLanguage = "fr" }) => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
 
     if (sectionRef.current) {
@@ -298,166 +146,122 @@ const ExperienceTimeline = ({ currentLanguage = "fr" }) => {
     return () => observer.disconnect();
   }, []);
 
-  // Vérification que currentLanguage existe dans les données
   const currentData = timelineData[currentLanguage] || timelineData.fr;
   const currentContent = content[currentLanguage] || content.fr;
 
   return (
     <section
-      id="experience"
+      id="education"
       ref={sectionRef}
-      className="relative py-20 min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-950 text-white overflow-hidden"
+      className="relative py-12 sm:py-20 bg-gradient-to-br from-gray-900 via-black to-gray-950 text-white overflow-hidden"
     >
-      {/* Cyber Glow Background */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-green-500/20 rounded-full blur-3xl animate-pulse" />
-        <div
-          className="absolute bottom-20 right-10 w-96 h-96 bg-green-500/20 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: "1s" }}
-        />
+      {/* Background optimisé */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-green-500/10 sm:bg-green-500/20 rounded-full blur-2xl sm:blur-3xl animate-pulse" />
+        <div className="absolute bottom-10 sm:bottom-20 right-5 sm:right-10 w-64 sm:w-96 h-64 sm:h-96 bg-green-500/10 sm:bg-green-500/20 rounded-full blur-2xl sm:blur-3xl animate-pulse delay-1000" />
       </div>
 
-      {/* Floating Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-[2px] h-[2px] bg-green-400/50 rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header optimisé mobile */}
         <div
-          className={`text-center mb-16 transition-all duration-800 ${
+          className={`text-center mb-8 sm:mb-16 transition-all duration-800 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-green-400 mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-green-400 mb-4 sm:mb-6">
             {currentContent.title}
           </h2>
-          <p className="text-xl text-green-300 font-semibold mb-4">
+          <p className="text-base sm:text-lg md:text-xl text-green-300 font-semibold mb-2 sm:mb-4">
             {currentContent.subtitle}
-          </p>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-            {currentContent.description}
           </p>
         </div>
 
-        {/* Timeline */}
+        {/* Timeline optimisée mobile */}
         <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-400 via-green-600 to-green-400 opacity-30" />
+          {/* Ligne de timeline - cachée sur très petit écran */}
+          <div className="hidden sm:block absolute left-6 sm:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-400 via-green-600 to-green-400 opacity-30" />
 
-          <div className="space-y-8">
+          <div className="space-y-4 sm:space-y-8">
             {currentData.map((item, index) => {
-              const colors = colorClasses[item.color];
               const isExpanded = expandedItem === item.id;
-              const isExperience = item.type === "experience";
 
               return (
                 <div
                   key={item.id}
-                  className={`relative flex items-start space-x-6 transition-all duration-800 ${
+                  className={`relative flex items-start space-x-3 sm:space-x-6 transition-all duration-800 ${
                     isVisible
                       ? "opacity-100 translate-x-0"
-                      : "opacity-0 -translate-x-12"
+                      : "opacity-0 -translate-x-8"
                   }`}
-                  style={{ transitionDelay: `${index * 200}ms` }}
+                  style={{ transitionDelay: `${index * 150}ms` }}
                 >
-                  {/* Timeline Dot */}
+                  {/* Timeline Dot optimisé */}
                   <div className="relative z-10 flex-shrink-0">
-                    <div
-                      className={`w-16 h-16 rounded-2xl flex items-center justify-center border-4 border-black ${colors.accent} shadow-lg`}
-                    >
-                      {renderIcon(
-                        isExperience ? "Briefcase" : "GraduationCap",
-                        24,
-                        colors.icon
-                      )}
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center border-2 sm:border-4 border-black shadow-lg">
+                      <GraduationCap
+                        size={20}
+                        className="text-white sm:w-6 sm:h-6"
+                      />
                     </div>
                   </div>
 
-                  {/* Content Card */}
+                  {/* Card optimisée mobile */}
                   <div className="flex-1 min-w-0">
                     <div
-                      className={`bg-black rounded-2xl p-6 shadow-lg border-2 cursor-pointer transition-all duration-300 hover:shadow-xl hover:scale-[1.02] ${
-                        isExpanded ? colors.border : "border-gray-800"
+                      className={`bg-black/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border-2 cursor-pointer transition-all duration-300 hover:shadow-xl ${
+                        isExpanded ? "border-green-500" : "border-gray-800"
                       }`}
                       onClick={() =>
                         setExpandedItem(isExpanded ? null : item.id)
                       }
                     >
-                      {/* Header */}
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center space-x-3 mb-2">
-                            <h3 className="text-xl font-bold text-green-400 truncate">
-                              {item.title}
-                            </h3>
-                            <span
-                              className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                                isExperience
-                                  ? "bg-green-800 text-green-200"
-                                  : "bg-green-700 text-green-100"
-                              }`}
-                            >
-                              {isExperience
-                                ? currentLanguage === "fr"
-                                  ? "Expérience"
-                                  : currentLanguage === "en"
-                                  ? "Experience"
-                                  : "خبرة"
-                                : currentLanguage === "fr"
-                                ? "Formation"
-                                : currentLanguage === "en"
-                                ? "Education"
-                                : "تعليم"}
-                            </span>
-                          </div>
-                          <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 text-gray-400 mb-2">
+                      {/* Header compact mobile */}
+                      <div className="flex items-start justify-between mb-3 sm:mb-4">
+                        <div className="flex-1 min-w-0 pr-2">
+                          <h3 className="text-lg sm:text-xl font-bold text-green-400 leading-tight mb-2">
+                            {item.title}
+                          </h3>
+
+                          {/* Infos compactes mobile */}
+                          <div className="space-y-1 text-sm text-gray-400">
                             <div className="flex items-center space-x-2">
-                              {renderIcon("Building", 16)}
-                              <span className="font-medium">
+                              <Building size={14} />
+                              <span className="truncate">
                                 {item.organization}
                               </span>
                             </div>
-                            <div className="flex items-center space-x-2">
-                              {renderIcon("MapPin", 16)}
-                              <span>{item.location}</span>
-                            </div>
-                          </div>
-                          <div className="flex items-center space-x-4 text-sm text-gray-500">
-                            <div className="flex items-center space-x-1">
-                              {renderIcon("Calendar", 14)}
-                              <span>{item.period}</span>
-                            </div>
-                            <div className="flex items-center space-x-1">
-                              {renderIcon("Clock", 14)}
-                              <span>{item.duration}</span>
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center space-x-2">
+                                <MapPin size={14} />
+                                <span>{item.location}</span>
+                              </div>
+                              <div className="flex items-center space-x-2 text-xs text-gray-500">
+                                <Calendar size={12} />
+                                <span>{item.period}</span>
+                              </div>
                             </div>
                           </div>
                         </div>
-                        {renderIcon(
-                          isExpanded ? "ChevronUp" : "ChevronDown",
-                          20,
-                          "text-gray-500 transition-transform"
-                        )}
+
+                        {/* Toggle button */}
+                        <div className="flex flex-col items-center">
+                          {isExpanded ? (
+                            <ChevronUp size={20} className="text-gray-500" />
+                          ) : (
+                            <ChevronDown size={20} className="text-gray-500" />
+                          )}
+                          <span className="text-xs text-gray-600 mt-1">
+                            {item.duration}
+                          </span>
+                        </div>
                       </div>
 
-                      {/* Description */}
-                      <p className="text-gray-300 mb-4 leading-relaxed">
+                      {/* Description toujours visible */}
+                      <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-3">
                         {item.description}
                       </p>
 
-                      {/* Expanded Content */}
+                      {/* Contenu étendu */}
                       <div
                         className={`overflow-hidden transition-all duration-300 ${
                           isExpanded
@@ -466,28 +270,23 @@ const ExperienceTimeline = ({ currentLanguage = "fr" }) => {
                         }`}
                       >
                         {isExpanded && (
-                          <div className="space-y-6 pt-4 border-t border-gray-700">
+                          <div className="space-y-4 pt-3 border-t border-gray-700">
                             {/* Achievements */}
                             <div>
-                              <h4 className="text-lg font-bold text-green-400 mb-3">
-                                {currentLanguage === "fr"
-                                  ? "Réalisations Clés"
-                                  : currentLanguage === "en"
-                                  ? "Key Achievements"
-                                  : "الإنجازات الرئيسية"}
+                              <h4 className="text-base font-bold text-green-400 mb-2">
+                                {currentContent.achievements}
                               </h4>
-                              <ul className="space-y-2">
+                              <ul className="space-y-1">
                                 {item.achievements.map((achievement, idx) => (
                                   <li
                                     key={idx}
-                                    className="flex items-start space-x-3"
+                                    className="flex items-start space-x-2"
                                   >
-                                    {renderIcon(
-                                      "CheckCircle",
-                                      16,
-                                      `${colors.icon} mt-1 flex-shrink-0`
-                                    )}
-                                    <span className="text-gray-300 text-sm leading-relaxed">
+                                    <CheckCircle
+                                      size={14}
+                                      className="text-green-400 mt-0.5 flex-shrink-0"
+                                    />
+                                    <span className="text-gray-300 text-sm">
                                       {achievement}
                                     </span>
                                   </li>
@@ -497,18 +296,14 @@ const ExperienceTimeline = ({ currentLanguage = "fr" }) => {
 
                             {/* Technologies */}
                             <div>
-                              <h4 className="text-lg font-bold text-green-400 mb-3">
-                                {currentLanguage === "fr"
-                                  ? "Technologies"
-                                  : currentLanguage === "en"
-                                  ? "Technologies"
-                                  : "التقنيات"}
+                              <h4 className="text-base font-bold text-green-400 mb-2">
+                                {currentContent.technologies}
                               </h4>
-                              <div className="flex flex-wrap gap-2">
+                              <div className="flex flex-wrap gap-1 sm:gap-2">
                                 {item.technologies.map((tech) => (
                                   <span
                                     key={tech}
-                                    className={`px-3 py-1 rounded-full text-sm font-medium ${colors.bg} ${colors.icon}`}
+                                    className="px-2 py-1 rounded-md text-xs font-medium bg-green-500/20 text-green-300"
                                   >
                                     {tech}
                                   </span>
@@ -518,16 +313,14 @@ const ExperienceTimeline = ({ currentLanguage = "fr" }) => {
 
                             {/* Skills */}
                             <div>
-                              <h4 className="text-lg font-bold text-green-400 mb-3">
-                                {currentLanguage === "fr"
-                                  ? "Compétences Développées"
-                                  : "Skills Developed"}
+                              <h4 className="text-base font-bold text-green-400 mb-2">
+                                {currentContent.skills}
                               </h4>
-                              <div className="flex flex-wrap gap-2">
+                              <div className="flex flex-wrap gap-1 sm:gap-2">
                                 {item.skills.map((skill) => (
                                   <span
                                     key={skill}
-                                    className="px-3 py-1 rounded-full text-sm font-medium bg-green-900 text-green-200"
+                                    className="px-2 py-1 rounded-md text-xs font-medium bg-green-900 text-green-200"
                                   >
                                     {skill}
                                   </span>
@@ -549,4 +342,4 @@ const ExperienceTimeline = ({ currentLanguage = "fr" }) => {
   );
 };
 
-export default ExperienceTimeline;
+export default AcademicTimeline;

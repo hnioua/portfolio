@@ -10,206 +10,128 @@ import {
   ChevronDown,
 } from "lucide-react";
 
-const ExperienceTimeline = ({ currentLanguage = "fr" }) => {
+const ProfessionalTimeline = ({ currentLanguage = "fr" }) => {
   const [expandedItem, setExpandedItem] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
-  // Définition des couleurs
-  const colorClasses = {
-    green: {
-      accent: "bg-gradient-to-br from-green-500 to-green-600",
-      icon: "text-white",
-      border: "border-green-500",
-      bg: "bg-green-500/20",
-    },
-  };
-
-  // Fonction pour rendre les icônes
-  const renderIcon = (iconName, size = 20, className = "") => {
-    const iconProps = { size, className };
-
-    switch (iconName) {
-      case "Briefcase":
-        return <Briefcase {...iconProps} />;
-      case "Building":
-        return <Building {...iconProps} />;
-      case "MapPin":
-        return <MapPin {...iconProps} />;
-      case "Calendar":
-        return <Calendar {...iconProps} />;
-      case "Clock":
-        return <Clock {...iconProps} />;
-      case "CheckCircle":
-        return <CheckCircle {...iconProps} />;
-      case "ChevronUp":
-        return <ChevronUp {...iconProps} />;
-      case "ChevronDown":
-        return <ChevronDown {...iconProps} />;
-      default:
-        return <div {...iconProps} />;
-    }
-  };
-
   const content = {
     fr: {
       title: "Expérience Professionnelle",
-      subtitle: "Stages & Projets réalisés dans des organismes de référence",
-      description:
-        "Parcours pratique en développement web, BI et intégration de données",
+      subtitle: "Stages & projets en développement & BI",
+      achievements: "Réalisations Clés",
+      technologies: "Technologies",
+      skills: "Compétences",
     },
     en: {
       title: "Professional Experience",
-      subtitle: "Internships & Projects carried out in leading organizations",
-      description:
-        "Hands-on journey in web development, BI, and data integration",
+      subtitle: "Internships & projects in development & BI",
+      achievements: "Key Achievements",
+      technologies: "Technologies",
+      skills: "Skills",
     },
   };
 
+  // Données professionnelles simplifiées
   const timelineData = {
     fr: [
       {
         id: 1,
-        type: "experience",
-        title: "Développement d'une plateforme numérique",
-        organization: "Agence de Développement Social (ADS)",
-        location: "Rabat, Maroc",
-        period: "Avril 2024 – Juillet 2024",
+        title: "Développement Plateforme BI",
+        organization: "ADS Rabat",
+        location: "Rabat",
+        period: "Avr - Juil 2024",
         duration: "3 mois",
         description:
-          "Développement d'une plateforme numérique pour l'intégration sociale des femmes avec visualisation via des outils BI. Mise en œuvre de processus ETL pour l'intégration des données multicanales.",
+          "Plateforme numérique d'intégration sociale des femmes avec visualisation BI et processus ETL.",
         achievements: [
-          "Développement d'une plateforme numérique pour l'intégration sociale des femmes",
-          "Mise en œuvre de processus ETL pour l'intégration des données multicanales",
+          "Plateforme BI pour intégration sociale",
+          "Processus ETL multichanaux",
         ],
-        technologies: [
-          "NextJs",
-          "NodeJs",
-          "Express",
-          "Excel",
-          "Power BI",
-          "MySQL",
-          "Python (Pandas)",
-        ],
-        skills: ["Business Intelligence", "ETL", "Fullstack Development"],
-        color: "green",
+        technologies: ["Next.js", "Node.js", "Power BI", "MySQL", "Python"],
+        skills: ["Business Intelligence", "ETL", "Full-stack"],
       },
       {
         id: 2,
-        type: "experience",
-        title: "Projet de développement",
-        organization:
-          "Académie Régionale de l'Éducation et de la Formation Souss Massa-Agadir",
-        location: "Agadir, Maroc",
-        period: "Avril 2023 – Juin 2023",
+        title: "Application Web Éducative",
+        organization: "AREF Souss Massa",
+        location: "Agadir",
+        period: "Avr - Juin 2023",
         duration: "2 mois",
         description:
-          "Développement d'une application web pour la collecte, la gestion et la visualisation des données d'institutions pionnières.",
+          "Application de collecte et visualisation des données d'institutions pionnières.",
         achievements: [
-          "Développement d'une application web pour la collecte, la gestion et la visualisation des données",
+          "Application de gestion de données éducatives",
+          "Tableaux de bord interactifs",
         ],
-        technologies: [
-          "ReactJs",
-          "React-Bootstrap",
-          "SQL",
-          "NodeJs",
-          "Express",
-        ],
-        skills: [
-          "Web Development",
-          "Data Visualization",
-          "Backend Development",
-        ],
-        color: "green",
+        technologies: ["React.js", "Node.js", "Express", "SQL"],
+        skills: ["Web Development", "Data Visualization", "Backend"],
       },
       {
         id: 3,
-        type: "experience",
-        title: "Stage d'initiation",
+        title: "Gestion Stagiaires Web",
         organization: "Transparence Informatique",
-        location: "Agadir, Maroc",
-        period: "Juillet 2022 – Août 2022",
+        location: "Agadir",
+        period: "Juil - Août 2022",
         duration: "1 mois",
         description:
-          "Développement d'une application web de gestion des stagiaires.",
+          "Application web de gestion et suivi des stagiaires avec interface admin.",
         achievements: [
-          "Développement d'une application web de gestion des stagiaires",
+          "Application complète de gestion",
+          "Interface d'administration",
         ],
-        technologies: ["HTML", "CSS", "SQL", "PHP", "JavaScript"],
+        technologies: ["HTML", "CSS", "PHP", "JavaScript", "SQL"],
         skills: ["Frontend", "Backend", "Database Design"],
-        color: "green",
       },
     ],
     en: [
       {
         id: 1,
-        type: "experience",
-        title: "Digital Platform Development",
-        organization: "Social Development Agency (ADS)",
-        location: "Rabat, Morocco",
-        period: "April 2024 – July 2024",
+        title: "BI Platform Development",
+        organization: "ADS Rabat",
+        location: "Rabat",
+        period: "Apr - Jul 2024",
         duration: "3 months",
         description:
-          "Development of a digital platform for women's social integration with visualization through BI tools. Implementation of ETL processes for multichannel data integration.",
+          "Digital platform for women's social integration with BI visualization and ETL processes.",
         achievements: [
-          "Development of a digital platform for women's social integration",
-          "Implementation of ETL processes for multichannel data integration",
+          "BI platform for social integration",
+          "Multichannel ETL processes",
         ],
-        technologies: [
-          "NextJs",
-          "NodeJs",
-          "Express",
-          "Excel",
-          "Power BI",
-          "MySQL",
-          "Python (Pandas)",
-        ],
-        skills: ["Business Intelligence", "ETL", "Fullstack Development"],
-        color: "green",
+        technologies: ["Next.js", "Node.js", "Power BI", "MySQL", "Python"],
+        skills: ["Business Intelligence", "ETL", "Full-stack"],
       },
       {
         id: 2,
-        type: "experience",
-        title: "Development Project",
-        organization:
-          "Regional Academy of Education and Training Souss Massa-Agadir",
-        location: "Agadir, Morocco",
-        period: "April 2023 – June 2023",
+        title: "Educational Web Application",
+        organization: "AREF Souss Massa",
+        location: "Agadir",
+        period: "Apr - Jun 2023",
         duration: "2 months",
         description:
-          "Development of a web application for data collection, management, and visualization of pioneering institutions.",
+          "Data collection and visualization application for pioneering institutions.",
         achievements: [
-          "Development of a web application for data collection, management, and visualization",
+          "Educational data management app",
+          "Interactive dashboards",
         ],
-        technologies: [
-          "ReactJs",
-          "React-Bootstrap",
-          "SQL",
-          "NodeJs",
-          "Express",
-        ],
-        skills: [
-          "Web Development",
-          "Data Visualization",
-          "Backend Development",
-        ],
-        color: "green",
+        technologies: ["React.js", "Node.js", "Express", "SQL"],
+        skills: ["Web Development", "Data Visualization", "Backend"],
       },
       {
         id: 3,
-        type: "experience",
-        title: "Introduction Internship",
+        title: "Trainee Management Web App",
         organization: "Transparence Informatique",
-        location: "Agadir, Morocco",
-        period: "July 2022 – August 2022",
+        location: "Agadir",
+        period: "Jul - Aug 2022",
         duration: "1 month",
-        description: "Development of a web application for trainee management.",
+        description:
+          "Web application for trainee management and tracking with admin interface.",
         achievements: [
-          "Development of a web application for trainee management",
+          "Complete management application",
+          "Administration interface",
         ],
-        technologies: ["HTML", "CSS", "SQL", "PHP", "JavaScript"],
+        technologies: ["HTML", "CSS", "PHP", "JavaScript", "SQL"],
         skills: ["Frontend", "Backend", "Database Design"],
-        color: "green",
       },
     ],
   };
@@ -221,7 +143,7 @@ const ExperienceTimeline = ({ currentLanguage = "fr" }) => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
 
     if (sectionRef.current) {
@@ -231,7 +153,6 @@ const ExperienceTimeline = ({ currentLanguage = "fr" }) => {
     return () => observer.disconnect();
   }, []);
 
-  // Vérification que currentLanguage existe dans les données
   const currentData = timelineData[currentLanguage] || timelineData.fr;
   const currentContent = content[currentLanguage] || content.fr;
 
@@ -239,139 +160,143 @@ const ExperienceTimeline = ({ currentLanguage = "fr" }) => {
     <section
       id="experience"
       ref={sectionRef}
-      className="relative py-20 min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-950 text-white overflow-hidden"
+      className="relative py-12 sm:py-20 bg-gradient-to-br from-gray-900 via-black to-gray-950 text-white overflow-hidden"
     >
-      {/* Background */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-green-500/20 rounded-full blur-3xl animate-pulse" />
-        <div
-          className="absolute bottom-20 right-10 w-96 h-96 bg-green-500/20 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: "1s" }}
-        />
+      {/* Background optimisé */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-green-500/10 sm:bg-green-500/20 rounded-full blur-2xl sm:blur-3xl animate-pulse" />
+        <div className="absolute bottom-10 sm:bottom-20 right-5 sm:right-10 w-64 sm:w-96 h-64 sm:h-96 bg-green-500/10 sm:bg-green-500/20 rounded-full blur-2xl sm:blur-3xl animate-pulse delay-1000" />
       </div>
 
-      {/* Floating Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-[2px] h-[2px] bg-green-400/50 rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header optimisé mobile */}
         <div
-          className={`text-center mb-16 transition-all duration-800 ${
+          className={`text-center mb-8 sm:mb-16 transition-all duration-800 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-green-400 mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-green-400 mb-4 sm:mb-6">
             {currentContent.title}
           </h2>
-          <p className="text-xl text-green-300 font-semibold mb-4">
+          <p className="text-base sm:text-lg md:text-xl text-green-300 font-semibold">
             {currentContent.subtitle}
-          </p>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-            {currentContent.description}
           </p>
         </div>
 
-        {/* Timeline */}
+        {/* Timeline optimisée mobile */}
         <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-400 via-green-600 to-green-400 opacity-30" />
+          {/* Ligne de timeline - cachée sur très petit écran */}
+          <div className="hidden sm:block absolute left-6 sm:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-400 via-green-600 to-green-400 opacity-30" />
 
-          <div className="space-y-8">
+          <div className="space-y-4 sm:space-y-8">
             {currentData.map((item, index) => {
-              const colors = colorClasses[item.color];
               const isExpanded = expandedItem === item.id;
 
               return (
                 <div
                   key={item.id}
-                  className={`relative flex items-start space-x-6 transition-all duration-800 ${
+                  className={`relative flex items-start space-x-3 sm:space-x-6 transition-all duration-800 ${
                     isVisible
                       ? "opacity-100 translate-x-0"
-                      : "opacity-0 -translate-x-12"
+                      : "opacity-0 -translate-x-8"
                   }`}
-                  style={{ transitionDelay: `${index * 200}ms` }}
+                  style={{ transitionDelay: `${index * 150}ms` }}
                 >
-                  {/* Timeline Dot */}
+                  {/* Timeline Dot optimisé */}
                   <div className="relative z-10 flex-shrink-0">
-                    <div
-                      className={`w-16 h-16 rounded-2xl flex items-center justify-center border-4 border-black ${colors.accent} shadow-lg`}
-                    >
-                      {renderIcon("Briefcase", 24, colors.icon)}
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center border-2 sm:border-4 border-black shadow-lg">
+                      <Briefcase
+                        size={20}
+                        className="text-white sm:w-6 sm:h-6"
+                      />
                     </div>
                   </div>
 
-                  {/* Content Card */}
+                  {/* Card optimisée mobile */}
                   <div className="flex-1 min-w-0">
                     <div
-                      className={`bg-black rounded-2xl p-6 shadow-lg border-2 cursor-pointer transition-all duration-300 hover:shadow-xl hover:scale-[1.02] ${
-                        isExpanded ? colors.border : "border-gray-800"
+                      className={`bg-black/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border-2 cursor-pointer transition-all duration-300 hover:shadow-xl ${
+                        isExpanded ? "border-green-500" : "border-gray-800"
                       }`}
                       onClick={() =>
                         setExpandedItem(isExpanded ? null : item.id)
                       }
                     >
-                      {/* Header */}
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center space-x-3 mb-2">
-                            <h3 className="text-xl font-bold text-green-400 truncate">
-                              {item.title}
-                            </h3>
+                      {/* Header compact mobile */}
+                      <div className="flex items-start justify-between mb-3 sm:mb-4">
+                        <div className="flex-1 min-w-0 pr-2">
+                          {/* Badge expérience */}
+                          <div className="flex items-center space-x-2 mb-2">
                             <span className="px-2 py-1 rounded-full text-xs font-semibold bg-green-800 text-green-200">
                               {currentLanguage === "fr"
-                                ? "Expérience"
-                                : "Experience"}
+                                ? "Stage"
+                                : "Internship"}
                             </span>
                           </div>
-                          <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 text-gray-400 mb-2">
+
+                          <h3 className="text-lg sm:text-xl font-bold text-green-400 leading-tight mb-2">
+                            {item.title}
+                          </h3>
+
+                          {/* Infos compactes mobile */}
+                          <div className="space-y-1 text-sm text-gray-400">
                             <div className="flex items-center space-x-2">
-                              {renderIcon("Building", 16)}
-                              <span className="font-medium">
+                              <Building size={14} />
+                              <span className="truncate">
                                 {item.organization}
                               </span>
                             </div>
-                            <div className="flex items-center space-x-2">
-                              {renderIcon("MapPin", 16)}
-                              <span>{item.location}</span>
-                            </div>
-                          </div>
-                          <div className="flex items-center space-x-4 text-sm text-gray-500">
-                            <div className="flex items-center space-x-1">
-                              {renderIcon("Calendar", 14)}
-                              <span>{item.period}</span>
-                            </div>
-                            <div className="flex items-center space-x-1">
-                              {renderIcon("Clock", 14)}
-                              <span>{item.duration}</span>
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center space-x-2">
+                                <MapPin size={14} />
+                                <span>{item.location}</span>
+                              </div>
+                              <div className="flex items-center space-x-2 text-xs text-gray-500">
+                                <Calendar size={12} />
+                                <span>{item.period}</span>
+                              </div>
                             </div>
                           </div>
                         </div>
-                        {renderIcon(
-                          isExpanded ? "ChevronUp" : "ChevronDown",
-                          20,
-                          "text-gray-500 transition-transform"
-                        )}
+
+                        {/* Toggle button */}
+                        <div className="flex flex-col items-center">
+                          {isExpanded ? (
+                            <ChevronUp size={20} className="text-gray-500" />
+                          ) : (
+                            <ChevronDown size={20} className="text-gray-500" />
+                          )}
+                          <span className="text-xs text-gray-600 mt-1">
+                            {item.duration}
+                          </span>
+                        </div>
                       </div>
 
-                      {/* Description */}
-                      <p className="text-gray-300 mb-4 leading-relaxed">
+                      {/* Description toujours visible */}
+                      <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-3">
                         {item.description}
                       </p>
 
-                      {/* Expanded Content */}
+                      {/* Technologies visibles par défaut */}
+                      <div className="mb-3">
+                        <div className="flex flex-wrap gap-1 sm:gap-2">
+                          {item.technologies.slice(0, 4).map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-2 py-1 rounded-md text-xs font-medium bg-green-500/20 text-green-300"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                          {item.technologies.length > 4 && (
+                            <span className="px-2 py-1 rounded-md text-xs text-gray-400">
+                              +{item.technologies.length - 4}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Contenu étendu */}
                       <div
                         className={`overflow-hidden transition-all duration-300 ${
                           isExpanded
@@ -380,26 +305,23 @@ const ExperienceTimeline = ({ currentLanguage = "fr" }) => {
                         }`}
                       >
                         {isExpanded && (
-                          <div className="space-y-6 pt-4 border-t border-gray-700">
+                          <div className="space-y-4 pt-3 border-t border-gray-700">
                             {/* Achievements */}
                             <div>
-                              <h4 className="text-lg font-bold text-green-400 mb-3">
-                                {currentLanguage === "fr"
-                                  ? "Réalisations Clés"
-                                  : "Key Achievements"}
+                              <h4 className="text-base font-bold text-green-400 mb-2">
+                                {currentContent.achievements}
                               </h4>
-                              <ul className="space-y-2">
+                              <ul className="space-y-1">
                                 {item.achievements.map((achievement, idx) => (
                                   <li
                                     key={idx}
-                                    className="flex items-start space-x-3"
+                                    className="flex items-start space-x-2"
                                   >
-                                    {renderIcon(
-                                      "CheckCircle",
-                                      16,
-                                      `${colors.icon} mt-1 flex-shrink-0`
-                                    )}
-                                    <span className="text-gray-300 text-sm leading-relaxed">
+                                    <CheckCircle
+                                      size={14}
+                                      className="text-green-400 mt-0.5 flex-shrink-0"
+                                    />
+                                    <span className="text-gray-300 text-sm">
                                       {achievement}
                                     </span>
                                   </li>
@@ -407,16 +329,16 @@ const ExperienceTimeline = ({ currentLanguage = "fr" }) => {
                               </ul>
                             </div>
 
-                            {/* Technologies */}
+                            {/* All Technologies */}
                             <div>
-                              <h4 className="text-lg font-bold text-green-400 mb-3">
-                                Technologies
+                              <h4 className="text-base font-bold text-green-400 mb-2">
+                                {currentContent.technologies}
                               </h4>
-                              <div className="flex flex-wrap gap-2">
+                              <div className="flex flex-wrap gap-1 sm:gap-2">
                                 {item.technologies.map((tech) => (
                                   <span
                                     key={tech}
-                                    className={`px-3 py-1 rounded-full text-sm font-medium ${colors.bg} ${colors.icon}`}
+                                    className="px-2 py-1 rounded-md text-xs font-medium bg-green-500/20 text-green-300"
                                   >
                                     {tech}
                                   </span>
@@ -426,16 +348,14 @@ const ExperienceTimeline = ({ currentLanguage = "fr" }) => {
 
                             {/* Skills */}
                             <div>
-                              <h4 className="text-lg font-bold text-green-400 mb-3">
-                                {currentLanguage === "fr"
-                                  ? "Compétences Développées"
-                                  : "Skills Developed"}
+                              <h4 className="text-base font-bold text-green-400 mb-2">
+                                {currentContent.skills}
                               </h4>
-                              <div className="flex flex-wrap gap-2">
+                              <div className="flex flex-wrap gap-1 sm:gap-2">
                                 {item.skills.map((skill) => (
                                   <span
                                     key={skill}
-                                    className="px-3 py-1 rounded-full text-sm font-medium bg-green-900 text-green-200"
+                                    className="px-2 py-1 rounded-md text-xs font-medium bg-green-900 text-green-200"
                                   >
                                     {skill}
                                   </span>
@@ -457,4 +377,4 @@ const ExperienceTimeline = ({ currentLanguage = "fr" }) => {
   );
 };
 
-export default ExperienceTimeline;
+export default ProfessionalTimeline;

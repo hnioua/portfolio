@@ -217,15 +217,24 @@ const HeroSection = ({ onScrollToSection, currentLanguage = "fr" }) => {
 
             {/* CTA Buttons avec Inter */}
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
-              <Button className="bg-green-500 hover:bg-green-600 text-white shadow-lg hover:scale-105 transition font-semibold">
+              {/* Bouton Télécharger CV */}
+              <a
+                href="/assets/docs/cvHnioua_Abdessamad.pdf"
+                download
+                className="px-4 py-2 rounded-lg font-medium transition-all duration-300 font-inter optimize-text 
+               bg-green-500 hover:bg-green-600 text-white shadow-lg hover:scale-105 transition font-semibold text-center"
+              >
                 {contentByLang[currentLanguage].downloadCV}
-              </Button>
-              <Button
-                onClick={() => onScrollToSection("contact")}
-                className="bg-green-500 text-white hover:bg-green-600 shadow-lg hover:scale-105 transition font-semibold"
+              </a>
+
+              {/* Bouton Contact */}
+              <a
+                href="#contact" // ou "/form-contact" si tu veux une page dédiée
+                className="px-4 py-2 rounded-lg font-medium transition-all duration-300 font-inter optimize-text 
+               bg-green-500 text-white hover:bg-green-600 shadow-lg hover:scale-105 transition font-semibold text-center"
               >
                 {contentByLang[currentLanguage].contact}
-              </Button>
+              </a>
             </div>
 
             {/* Tech Stack avec Outfit */}

@@ -97,7 +97,7 @@ const ExperienceShowcase = ({ currentLanguage }) => {
       categories: ["web"],
       client: "AREF Souss Massa",
       duration: "2 mois",
-      status: "Académique",
+      status: "Production",
       description:
         "Plateforme régionale pour le suivi et l'évaluation du projet des Institutions pionnières dans 53 écoles primaires de la région Souss Massa.",
       technologies: ["React.js", "Node.js", "MySQL", "PowerAMC"],

@@ -219,7 +219,7 @@ const HeroSection = ({ onScrollToSection, currentLanguage = "fr" }) => {
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
               {/* Bouton Télécharger CV */}
               <a
-                href="/assets/docs/cvHnioua_Abdessamad.pdf"
+                href="/assets/docs/CV_HniouaAbdessamad.pdf"
                 download
                 className="px-4 py-2 rounded-lg font-medium transition-all duration-300 font-inter optimize-text 
                bg-green-500 hover:bg-green-600 text-white shadow-lg hover:scale-105 transition font-semibold text-center"
